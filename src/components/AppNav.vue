@@ -6,6 +6,9 @@
     <router-link to="/join">
       Join
     </router-link>
+    <router-link to="/jmtshow">
+      JMTShow
+    </router-link>
     <router-link v-if="!loggedIn" to="/login">
       Login
     </router-link>
@@ -18,13 +21,13 @@ import { authComputed } from '../vuex/helpers.js'
 
 export default {
   computed: {
-      ...authComputed
+    ...authComputed
   },
   methods: {
     logout() {
       console.log('logout')
       this.$store.dispatch('logout').then(() => {
-        this.$router.push({ name: 'jmtlist' })
+        this.$router.push({ name: 'home' })
       })
     }
   }
@@ -62,6 +65,7 @@ a {
 
 button,
 .button {
+  cursor: pointer;
   margin-left: auto;
   background: white;
   text-decoration: none;

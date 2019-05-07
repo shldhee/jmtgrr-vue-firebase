@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     user: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    userItems : null,
   },
   mutations: {
     SET_USER(state, payload) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     SET_IS_AUTHENTICATED(state, payload) {
       state.isAuthenticated = payload
+    },
+    SET_USER_ITEMS(state, payload) {
+      state.userItems = payload;
     }
   },
   actions: {
@@ -57,6 +61,22 @@ export default new Vuex.Store({
         .catch(() => {
           commit('SET_USER', null)
           commit('SET_IS_AUTHENTICATED', false)
+        })
+    },
+    addItem({ state }, payload) {
+      console.log(payload);
+      return firebase
+        .database()
+        .ref('users')
+        .child(state.user.user.uid)
+        .push(payload)
+    },
+    getUserItems({ state, commit }) {
+      return firebase
+        .database()
+        .ref('users/' + state.user.user.uid)
+        .once('value', snapshot => {
+          commit('SET_USER_ITEMS', snapshot.val())
         })
     }
   },
