@@ -20,10 +20,17 @@ export default {
   },
   methods: {
     join() {
-      this.$store.dispatch('join', {
-        email: this.email,
-        password: this.password
-      })
+      this.$store
+        .dispatch('join', {
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push({ name: 'jmtzcreate' })
+        })
+        .catch(error => {
+          console.log('There was an error in JoinUser : ', error.message)
+        })
     }
   }
 }

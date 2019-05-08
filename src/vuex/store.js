@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import firebase from 'firebase'
+import firebaseService from '@/services/firebaseServices.js'
 
 Vue.use(Vuex)
 
@@ -8,8 +9,8 @@ export default new Vuex.Store({
   state: {
     user: null,
     isAuthenticated: false,
-    userItems: null,
-    JMTZs: []
+    JMTZs: [],
+    getJMTZs: null
   },
   mutations: {
     SET_USER(state, payload) {
@@ -18,31 +19,34 @@ export default new Vuex.Store({
     SET_IS_AUTHENTICATED(state, payload) {
       state.isAuthenticated = payload
     },
-    SET_USER_ITEMS(state, payload) {
-      state.userItems = payload
+    GET_JMTZS(state, payload) {
+      state.getJMTZs = payload
     },
-    ADD_JMTZ(state, payload) {
+    SET_JMTZ(state, payload) {
+      console.log(state.JMTZs)
+      console.log(typeof state.JMTZs)
+      console.log(payload)
       state.JMTZs.push(payload)
     }
   },
   actions: {
     join({ commit }, { email, password }) {
-      return firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
+      return firebaseService
+        .createUser(email, password)
         .then(user => {
           commit('SET_USER', user)
           commit('SET_IS_AUTHENTICATED', true)
         })
-        .catch(() => {
+        .catch(error => {
+          console.log('There was an error in join(store.js) : ', error)
           commit('SET_USER', null)
           commit('SET_IS_AUTHENTICATED', false)
+          throw error
         })
     },
     login({ commit }, { email, password }) {
-      return firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
+      return firebaseService
+        .signIn(email, password)
         .then(user => {
           commit('SET_USER', user)
           commit('SET_IS_AUTHENTICATED', true)
@@ -53,8 +57,7 @@ export default new Vuex.Store({
         })
     },
     logout({ commit }) {
-      return firebase
-        .auth()
+      return firebaseService
         .signOut()
         .then(() => {
           commit('SET_USER', null)
@@ -66,21 +69,16 @@ export default new Vuex.Store({
         })
     },
     createjmt({ commit, state }, payload) {
-      return firebase
-        .database()
-        .ref('users')
-        .child(state.user.user.uid)
-        .push(payload)
-        .then(() => {
-          commit('ADD_JMTZ', payload)
-        })
+      return firebaseService.addJMTZ({ state }, payload).then(() => {
+        commit('SET_JMTZ', payload)
+      })
     },
-    getUserItems({ state, commit }) {
+    getJMTZs({ state, commit }) {
       return firebase
         .database()
         .ref('users/' + state.user.user.uid)
         .once('value', snapshot => {
-          commit('SET_USER_ITEMS', snapshot.val())
+          commit('GET_JMTZS', snapshot.val())
         })
     }
   },

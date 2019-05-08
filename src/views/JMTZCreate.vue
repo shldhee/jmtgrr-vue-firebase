@@ -73,7 +73,7 @@ export default {
   methods: {
     create() {
       this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
-        this.$router.push({ name: 'jmtzshow' })
+        this.$router.push({ name: 'jmtzlist' })
         this.JMTZObject = this.createFreshJMTZObject()
       })
     },
