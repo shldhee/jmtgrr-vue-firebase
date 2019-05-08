@@ -1,8 +1,15 @@
 <template>
   <div>
     <h1>Load Items</h1>
-    <div v-for="item in userItems" :key="item.id">
-      {{ item }}
+    <div v-for="item in userItems" :key="item.user">
+      {{ item.email }}
+      {{ item.category }}
+      {{ item.name }}
+      {{ item.menu }}
+      {{ item.price }}
+      {{ item.location }}
+      {{ item.memo }}
+      {{ item.like }}
     </div>
   </div>
 </template>

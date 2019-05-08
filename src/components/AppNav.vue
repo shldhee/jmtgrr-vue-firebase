@@ -6,13 +6,16 @@
     <router-link to="/join">
       Join
     </router-link>
+    <router-link to="/jmtcreate">
+      JMTCreate
+    </router-link>
     <router-link to="/jmtshow">
       JMTShow
     </router-link>
     <router-link v-if="!loggedIn" to="/login">
       Login
     </router-link>
-    <button v-else @click="logout" type="button">Logout</button>
+    <a href="#;" v-else @click="logout">Logout</a>
   </div>
 </template>
 

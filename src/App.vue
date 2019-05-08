@@ -22,6 +22,8 @@ body {
   color: #2c3e50;
   padding: 0em;
   margin: 0em;
+  width: 640px;
+  margin: 0 auto;
 }
 
 a:visited {

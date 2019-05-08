@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     user: null,
     isAuthenticated: false,
-    userItems : null,
+    userItems: null,
+    jmts: []
   },
   mutations: {
     SET_USER(state, payload) {
@@ -18,7 +19,10 @@ export default new Vuex.Store({
       state.isAuthenticated = payload
     },
     SET_USER_ITEMS(state, payload) {
-      state.userItems = payload;
+      state.userItems = payload
+    },
+    ADD_JMT(state, payload) {
+      state.jmts.push(payload)
     }
   },
   actions: {
@@ -27,7 +31,6 @@ export default new Vuex.Store({
         .auth()
         .createUserWithEmailAndPassword(email, password)
         .then(user => {
-          console.log(user)
           commit('SET_USER', user)
           commit('SET_IS_AUTHENTICATED', true)
         })
@@ -41,7 +44,6 @@ export default new Vuex.Store({
         .auth()
         .signInWithEmailAndPassword(email, password)
         .then(user => {
-          console.log(user)
           commit('SET_USER', user)
           commit('SET_IS_AUTHENTICATED', true)
         })
@@ -63,13 +65,15 @@ export default new Vuex.Store({
           commit('SET_IS_AUTHENTICATED', false)
         })
     },
-    addItem({ state }, payload) {
-      console.log(payload);
+    createjmt({ commit, state }, payload) {
       return firebase
         .database()
         .ref('users')
         .child(state.user.user.uid)
         .push(payload)
+        .then(() => {
+          commit('ADD_JMT', payload)
+        })
     },
     getUserItems({ state, commit }) {
       return firebase
