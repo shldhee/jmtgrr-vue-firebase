@@ -21,7 +21,7 @@ export default {
   methods: {
     join() {
       this.$store
-        .dispatch('join', {
+        .dispatch('user/join', {
           email: this.email,
           password: this.password
         })

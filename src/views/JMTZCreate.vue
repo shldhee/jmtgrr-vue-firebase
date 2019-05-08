@@ -72,13 +72,15 @@ export default {
   },
   methods: {
     create() {
+      console.log('befred dispatch')
       this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
+        console.log('after dispatch')
         this.$router.push({ name: 'jmtzlist' })
         this.JMTZObject = this.createFreshJMTZObject()
       })
     },
     createFreshJMTZObject() {
-      const email = this.$store.state.user.user.email
+      const email = this.$store.state.user.user.user.email
       return {
         email: email,
         category: '',

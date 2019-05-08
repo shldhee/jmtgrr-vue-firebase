@@ -16,8 +16,8 @@
       <router-link to="/jmtzcreate">
         JMTZCreate
       </router-link>
-      <router-link to="/jmtzshow">
-        JMTZShow
+      <router-link to="/jmtzlist">
+        JMTZList
       </router-link>
     </template>
   </div>
@@ -33,7 +33,7 @@ export default {
   methods: {
     logout() {
       console.log('logout')
-      this.$store.dispatch('logout').then(() => {
+      this.$store.dispatch('user/logout').then(() => {
         this.$router.push({ name: 'home' })
       })
     }
