@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import JMTCreate from './views/JMTCreate.vue'
-import JMTList from './views/JMTList.vue'
-import JMTShow from './views/JMTShow.vue'
+import JMTZCreate from './views/JMTZCreate.vue'
+import JMTZList from './views/JMTZList.vue'
 import JoinUser from './views/JoinUser.vue'
 import LoginUser from './views/LoginUser.vue'
 
@@ -19,19 +18,14 @@ export default new Router({
       component: Home
     },
     {
-      path: '/jmtcreate',
-      name: 'jmtcreate',
-      component: JMTCreate
+      path: '/jmtzcreate',
+      name: 'jmtzcreate',
+      component: JMTZCreate
     },
     {
-      path: '/jmtlist',
-      name: 'jmtlist',
-      component: JMTList
-    },
-    {
-      path: '/jmtshow',
-      name: 'jmtshow',
-      component: JMTShow
+      path: '/jmtzlist',
+      name: 'jmtzlist',
+      component: JMTZList
     },
     {
       path: '/join',

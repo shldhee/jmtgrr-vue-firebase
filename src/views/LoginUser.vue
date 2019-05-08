@@ -26,7 +26,7 @@ export default {
           password: this.password
         })
         .then(() => {
-          this.$router.push({ name: 'jmtlist' })
+          this.$router.push({ name: 'jmtzlist' })
         })
     }
   }

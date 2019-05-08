@@ -9,7 +9,7 @@ export default new Vuex.Store({
     user: null,
     isAuthenticated: false,
     userItems: null,
-    jmts: []
+    JMTZs: []
   },
   mutations: {
     SET_USER(state, payload) {
@@ -21,8 +21,8 @@ export default new Vuex.Store({
     SET_USER_ITEMS(state, payload) {
       state.userItems = payload
     },
-    ADD_JMT(state, payload) {
-      state.jmts.push(payload)
+    ADD_JMTZ(state, payload) {
+      state.JMTZs.push(payload)
     }
   },
   actions: {
@@ -72,7 +72,7 @@ export default new Vuex.Store({
         .child(state.user.user.uid)
         .push(payload)
         .then(() => {
-          commit('ADD_JMT', payload)
+          commit('ADD_JMTZ', payload)
         })
     },
     getUserItems({ state, commit }) {

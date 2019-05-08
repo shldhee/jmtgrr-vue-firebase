@@ -2,7 +2,7 @@
   <div>
     <form @submit.prevent="create">
       <label for="">종류</label>
-      <select v-model="jmtObject.category">
+      <select v-model="JMTZObject.category">
         <option>한식</option>
         <option>양식</option>
         <option>일식</option>
@@ -14,7 +14,7 @@
       <div class="group">
         <label for="">가게 이름</label>
         <input
-          v-model="jmtObject.name"
+          v-model="JMTZObject.name"
           type="text"
           placeholder="가게 이름을 입력하세요"
         />
@@ -22,7 +22,7 @@
       <div class="group">
         <label for="">메뉴</label>
         <input
-          v-model="jmtObject.menu"
+          v-model="JMTZObject.menu"
           type="text"
           placeholder="메뉴를 입력하세요"
         />
@@ -30,7 +30,7 @@
       <div class="group">
         <label for="">가격</label>
         <input
-          v-model="jmtObject.price"
+          v-model="JMTZObject.price"
           type="text"
           placeholder="가격를 입력하세요"
         />
@@ -38,7 +38,7 @@
       <div class="group">
         <label for="">장소</label>
         <input
-          v-model="jmtObject.location"
+          v-model="JMTZObject.location"
           type="text"
           placeholder="장소를 입력하세요"
         />
@@ -46,14 +46,14 @@
       <div class="group">
         <label for="">특이사항</label>
         <input
-          v-model="jmtObject.memo"
+          v-model="JMTZObject.memo"
           type="text"
           placeholder="특이사항을 입력하세요"
         />
       </div>
       <div class="group">
         <label for="">추천/비추천</label>
-        <select v-model="jmtObject.like">
+        <select v-model="JMTZObject.like">
           <option>추천</option>
           <option>비추천</option>
         </select>
@@ -66,9 +66,20 @@
 <script>
 export default {
   data() {
-    const email = this.$store.state.user.user.email
     return {
-      jmtObject: {
+      JMTZObject: this.createFreshJMTZObject()
+    }
+  },
+  methods: {
+    create() {
+      this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
+        this.$router.push({ name: 'jmtzshow' })
+        this.JMTZObject = this.createFreshJMTZObject()
+      })
+    },
+    createFreshJMTZObject() {
+      const email = this.$store.state.user.user.email
+      return {
         email: email,
         category: '',
         name: '',
@@ -78,13 +89,6 @@ export default {
         memo: '',
         like: ''
       }
-    }
-  },
-  methods: {
-    create() {
-      this.$store.dispatch('createjmt', this.jmtObject).then(() => {
-        this.$router.push({ name: 'jmtshow' })
-      })
     }
   }
 }

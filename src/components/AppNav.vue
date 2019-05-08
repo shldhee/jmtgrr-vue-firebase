@@ -3,19 +3,23 @@
     <router-link to="/">
       Home
     </router-link>
-    <router-link to="/join">
-      Join
-    </router-link>
-    <router-link to="/jmtcreate">
-      JMTCreate
-    </router-link>
-    <router-link to="/jmtshow">
-      JMTShow
-    </router-link>
-    <router-link v-if="!loggedIn" to="/login">
-      Login
-    </router-link>
-    <a href="#;" v-else @click="logout">Logout</a>
+    <template v-if="!loggedIn">
+      <router-link to="/join">
+        Join
+      </router-link>
+      <router-link to="/login">
+        Login
+      </router-link>
+    </template>
+    <template v-else>
+      <a href="#;" @click="logout">Logout</a>
+      <router-link to="/jmtzcreate">
+        JMTZCreate
+      </router-link>
+      <router-link to="/jmtzshow">
+        JMTZShow
+      </router-link>
+    </template>
   </div>
 </template>
 
