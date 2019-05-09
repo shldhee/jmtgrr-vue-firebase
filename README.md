@@ -34,12 +34,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - LOGIN 버튼 누르면 바로 넘어감 또는 기존 DB 가지고 있음(로그아웃시)
     - 로그아웃시 로그인 화면으로 넘어감
     - 로그인 권한 있는 페이지에서 로그아웃 해도 로그인 화면으로 넘어감
-
+- LOGIN 후 뒤로가기 할때 다시 로그인 페이지 나옴
 - 알림
 - form validation   
     - form
     - login, join
-- 기획추가
+
+
 
 ### Problem
 
