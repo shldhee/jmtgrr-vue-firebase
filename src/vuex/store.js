@@ -28,9 +28,13 @@ export default new Vuex.Store({
       })
     },
     getJMTZs({ rootState, commit }) {
-      return firebaseService.getJMTZ({ rootState }).once('value', snapshot => {
-        commit('GET_JMTZS', snapshot.val())
-      })
+      return firebaseService
+        .getJMTZ({ rootState })
+        .once('value')
+        .then(snapshot => {
+          commit('GET_JMTZS', snapshot.val())
+          return snapshot.val()
+        })
     }
   },
   getters: {}

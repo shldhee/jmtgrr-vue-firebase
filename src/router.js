@@ -5,6 +5,7 @@ import JMTZCreate from './views/JMTZCreate.vue'
 import JMTZList from './views/JMTZList.vue'
 import JoinUser from './views/JoinUser.vue'
 import LoginUser from './views/LoginUser.vue'
+import NotFound from './views/NotFound.vue'
 import NProgress from 'nprogress'
 import store from '@/vuex/store'
 
@@ -22,14 +23,24 @@ const router = new Router({
     {
       path: '/jmtzcreate',
       name: 'jmtzcreate',
-      component: JMTZCreate
+      component: JMTZCreate,
+      meta: {
+        authRequired: true
+      }
     },
     {
       path: '/jmtzlist',
       name: 'jmtzlist',
       component: JMTZList,
+      props: true,
+      meta: {
+        authRequired: true
+      },
       beforeEnter(routeTo, routeFrom, next) {
-        store.dispatch('getJMTZs').then(() => {
+        console.log(1234)
+        store.dispatch('getJMTZs').then(getJMTZs => {
+          console.log(getJMTZs)
+          routeTo.params.getJMTZs = getJMTZs
           next()
         })
       }
@@ -43,16 +54,40 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: LoginUser
+    },
+    {
+      path: '/404',
+      name: '404',
+      component: NotFound
+    },
+    {
+      path: '*',
+      redirect: { name: '404' }
     }
   ]
 })
 
 router.beforeEach((routeTo, routeFrom, next) => {
-  NProgress.start()
-  next()
+  // console.log(authComputed.loggedIn())
+  // console.log({ ...authComputed })
+  // console.log(!authComputed.loggedIn())
+  // console.log(store.state.user.isAuthenticated)
+  // console.log(!store.state.user.isAuthenticated)
+  if (routeTo.matched.some(record => record.meta.authRequired)) {
+    if (!store.state.user.isAuthenticated) {
+      next({
+        path: '/login'
+      })
+    } else {
+      next()
+    }
+  } else {
+    NProgress.start()
+    next()
+  }
 })
 
-router.afterEach((routeTo, routeFrom) => {
+router.afterEach(() => {
   NProgress.done()
 })
 

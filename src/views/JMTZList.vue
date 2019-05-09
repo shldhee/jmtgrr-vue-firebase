@@ -15,9 +15,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-  computed: mapState(['getJMTZs'])
+  created() {
+    console.log('Created!!')
+  },
+  beforeRouteUpdate() {
+    console.log('beforeRouteUpdate', this.getJMTZs)
+  },
+  props: {
+    getJMTZs: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>

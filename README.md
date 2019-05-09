@@ -32,6 +32,14 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### Working
 
 - LOGIN 버튼 누르면 바로 넘어감 또는 기존 DB 가지고 있음(로그아웃시)
+    - 로그아웃시 로그인 화면으로 넘어감
+    - 로그인 권한 있는 페이지에서 로그아웃 해도 로그인 화면으로 넘어감
+
+- 알림
+- form validation   
+    - form
+    - login, join
+- 기획추가
 
 ### Problem
 
@@ -56,6 +64,16 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - **Route Guard**
     - `router.js` 라우트의 설정 객체에 직접 정의
     - `beforeEnter` : 전역 가드와 같은 signature? 역할?
+    ```js
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+        store.dispatch('getJMTZs').then(getJMTZs => {
+            routeTo.params.getJMTZs = getJMTZs
+            next()
+        })
+      }
+    ```
+    - `props: true`이면 `routeTo.params`가 `props`로 설정
 
 
 - **mapState**
@@ -64,3 +82,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         computed: mapState(['getJMTZs'])
     ```
     
+- **login유지**
+    - firebase 세션 유지이용해야 될듯
+    - 현재 localstorage로 하려다가 id, password 추가할려면 암호화해야 되므로 firebase로 설계를 다시 해야될듯하다.
+    - 현재는 `router { meta }` 이용해서 로그인 화면으로
+
+- **logout시 warning**
+    - `vue.runtime.esm.js?2b0e:619 [Vue warn]: Missing required prop: "getJMTZs"`
+    - 간헐적으로 발생하는데 확인필요
+

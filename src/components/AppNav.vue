@@ -27,15 +27,24 @@
 import { authComputed } from '../vuex/helpers.js'
 
 export default {
+  mounted() {
+    console.log('AppNav Mounted')
+  },
   computed: {
     ...authComputed
   },
   methods: {
     logout() {
-      console.log('logout')
-      this.$store.dispatch('user/logout').then(() => {
-        this.$router.push({ name: 'home' })
-      })
+      console.log('Before dispatch user/logout')
+      this.$store
+        .dispatch('user/logout')
+        .then(() => {
+          this.$router.push({ name: 'home' })
+          console.log('after dispatch user/logout and Before router push')
+        })
+        .catch(error => {
+          console.log('There was en error : ', error)
+        })
     }
   }
 }
