@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Load Items</h1>
-    <div v-for="JMTZ in userJMTZs" :key="JMTZ.user">
+    <div v-for="JMTZ in getJMTZs" :key="JMTZ.user">
       {{ JMTZ.email }}
       {{ JMTZ.category }}
       {{ JMTZ.name }}
@@ -15,19 +15,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  computed: {
-    userJMTZs() {
-      return this.$store.state.getJMTZs
-    }
-  },
-  mounted() {
-    this.getJMTZs()
-  },
-  methods: {
-    getJMTZs() {
-      this.$store.dispatch('getJMTZs')
-    }
-  }
+  computed: mapState(['getJMTZs'])
 }
 </script>

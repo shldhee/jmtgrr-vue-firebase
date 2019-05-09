@@ -5,10 +5,12 @@ import JMTZCreate from './views/JMTZCreate.vue'
 import JMTZList from './views/JMTZList.vue'
 import JoinUser from './views/JoinUser.vue'
 import LoginUser from './views/LoginUser.vue'
+import NProgress from 'nprogress'
+import store from '@/vuex/store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
@@ -25,7 +27,12 @@ export default new Router({
     {
       path: '/jmtzlist',
       name: 'jmtzlist',
-      component: JMTZList
+      component: JMTZList,
+      beforeEnter(routeTo, routeFrom, next) {
+        store.dispatch('getJMTZs').then(() => {
+          next()
+        })
+      }
     },
     {
       path: '/join',
@@ -39,3 +46,14 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach((routeTo, routeFrom) => {
+  NProgress.done()
+})
+
+export default router
