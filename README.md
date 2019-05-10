@@ -42,6 +42,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     - form
     - login, join
 
+- 개인 취향 그래프? 도형?
+- 음식고르기 랜덤 
 
 
 ### Problem
