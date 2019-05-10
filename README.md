@@ -34,6 +34,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - LOGIN 버튼 누르면 바로 넘어감 또는 기존 DB 가지고 있음(로그아웃시)
     - 로그아웃시 로그인 화면으로 넘어감
     - 로그인 권한 있는 페이지에서 로그아웃 해도 로그인 화면으로 넘어감
+    - **router.replace 사용**
+        - https://router.vuejs.org/kr/guide/essentials/navigation.html
 - LOGIN 후 뒤로가기 할때 다시 로그인 페이지 나옴
 - 알림
 - form validation   
@@ -92,3 +94,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     - `vue.runtime.esm.js?2b0e:619 [Vue warn]: Missing required prop: "getJMTZs"`
     - 간헐적으로 발생하는데 확인필요
 
+- **NProgress**
+    - `NProgress.start()` 하고 라우트 레코드 meta 검사하여 로그인 권한이 필요한 페이지 분기처리할때
+    - `login, join`에서는 component안에 적용

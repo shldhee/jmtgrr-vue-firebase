@@ -68,6 +68,7 @@ const router = new Router({
 })
 
 router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start()
   // console.log(authComputed.loggedIn())
   // console.log({ ...authComputed })
   // console.log(!authComputed.loggedIn())
@@ -82,7 +83,6 @@ router.beforeEach((routeTo, routeFrom, next) => {
       next()
     }
   } else {
-    NProgress.start()
     next()
   }
 })

@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import NProgress from 'nprogress'
+
 export default {
   data() {
     return {
@@ -20,13 +22,18 @@ export default {
   },
   methods: {
     login() {
+      NProgress.start()
       this.$store
         .dispatch('user/login', {
           email: this.email,
           password: this.password
         })
         .then(() => {
-          this.$router.push({ name: 'jmtzlist' })
+          // this.$router.push({ name: 'jmtzlist' })
+          this.$router.replace({ name: 'jmtzlist' })
+        })
+        .catch(() => {
+          NProgress.done()
         })
     }
   }

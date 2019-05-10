@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import NProgress from 'nprogress'
+
 export default {
   data() {
     return {
@@ -20,15 +22,18 @@ export default {
   },
   methods: {
     join() {
+      NProgress.start()
       this.$store
         .dispatch('user/join', {
           email: this.email,
           password: this.password
         })
         .then(() => {
-          this.$router.push({ name: 'jmtzcreate' })
+          // this.$router.push({ name: 'jmtzcreate' })
+          this.$router.replace({ name: 'jmtzcreate' })
         })
         .catch(error => {
+          NProgress.done()
           console.log('There was an error in JoinUser : ', error.message)
         })
     }
