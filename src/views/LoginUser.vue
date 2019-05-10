@@ -1,13 +1,15 @@
 <template>
-  <div class="hello">
-    <form @submit.prevent="login">
+  <form @submit.prevent="login">
+    <div class="group">
       <label for="userId">email</label>
       <input v-model="email" type="text" name="userEmail" id="userEmail" />
+    </div>
+    <div class="group">
       <label for="userPwd">pasword</label>
       <input v-model="password" type="password" name="userPwd" id="userPwd" />
-      <button type="submit" name="button">LOGIN</button>
-    </form>
-  </div>
+    </div>
+    <button type="submit" name="button">LOGIN</button>
+  </form>
 </template>
 
 <script>

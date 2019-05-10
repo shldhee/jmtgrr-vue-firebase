@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-nav />
-    <router-view />
+    <router-view class="form" />
   </div>
 </template>
 
@@ -14,70 +14,97 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  font-size: 1.2rem;
   color: #2c3e50;
-  padding: 0em;
-  margin: 0em;
-  width: 640px;
   margin: 0 auto;
+  padding: 0;
+  max-width: 64rem;
+  width: 100%;
 }
 
-a:visited {
-  color: #2c3e50;
-}
-
-.button,
 button {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 5em;
-  height: 2em;
-  margin: 0.5em;
-  border-radius: 5px;
-  background: linear-gradient(to right, #16c0b0, #84cf6a);
-  font-size: 1em;
-  color: white;
-  border: none;
   outline: none;
-}
+  cursor: pointer;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  color: #ffffff;
+  background-color: #f3664e;
+  border: none;
+  border-radius: 0.4rem;
+  box-shadow: 0 0.4rem 0 0 #de5440;
+  min-width: 12rem;
+  margin-top: 2rem;
+  transition: all 1s;
 
-form {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 20em;
-  margin-bottom: 2em;
+  &:hover {
+    background-color: #fb8368;
+    box-shadow: 0 0.4rem 0 0 #f1735c;
+  }
 
-  p {
-    color: red;
+  &:active {
+    background-color: #df5c48;
+    box-shadow: 0 0.4rem 0 0 #d3523e;
   }
 }
 
-input {
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  height: 2.6em;
-  padding: 0.5em;
-  margin-bottom: 1em;
-  font: 1em 'Avenir', Helvetica, sans-serif;
-}
-
-h1 {
-  margin-top: 0;
-}
-
-.hello {
+.form {
+  // width: 90%;
+  padding: 3rem;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
-  min-height: calc(100vh - 56px);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  margin: 1rem 0;
+
+  label {
+    font-size: 2.6rem;
+  }
+
+  input,
+  select {
+    display: block;
+    text-align: left;
+    height: 5.2rem;
+    width: 100%;
+    margin-top: 0.8rem;
+    padding: 0 1rem;
+    font-size: 2rem;
+    box-sizing: border-box;
+    vertical-align: middle;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background: #fff
+      url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuMjQpOyIvPjwvc3ZnPg==)
+      no-repeat right 12px center;
+
+    // &:after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 0;
+    //   height: 0;
+    //   border-style: solid;
+    //   border-width: 100px 100px 0 100px;
+    //   border-color: #007bff transparent transparent transparent;
+    // }
+  }
 }
 </style>

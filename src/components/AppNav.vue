@@ -12,13 +12,13 @@
       </router-link>
     </template>
     <template v-else>
-      <a href="#;" @click="logout">Logout</a>
       <router-link to="/jmtzcreate">
         JMTZCreate
       </router-link>
       <router-link to="/jmtzlist">
         JMTZList
       </router-link>
+      <a href="#;" @click="logout">Logout</a>
     </template>
   </div>
 </template>
@@ -54,42 +54,35 @@ export default {
 #nav {
   display: flex;
   align-items: center;
-  min-height: 50px;
+  min-height: 7rem;
   padding: 0.2em 1em;
-  background: linear-gradient(to right, #16c0b0, #84cf6a);
-}
-
-.nav-welcome {
-  margin-left: auto;
-  margin-right: 1rem;
-  color: white;
+  background: linear-gradient(to right, #d2527f, #d91e18);
 }
 
 a {
+  font-size: 2.8rem;
   font-weight: bold;
-  color: #2c3e50;
-  margin: auto 0.8em auto 0.4em;
+  color: #2e3131;
+  margin: auto 1rem;
   text-decoration: none;
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
+  transition: all 1s;
+
+  &:hover {
+    color: white;
+    border-bottom: 2px solid #fff;
+  }
+
+  &:active {
+    color: white;
+    border-bottom: 2px solid #fff;
+  }
 }
 
 .router-link-exact-active {
   color: white;
   border-bottom: 2px solid #fff;
-}
-
-button,
-.button {
-  cursor: pointer;
-  margin-left: auto;
-  background: white;
-  text-decoration: none;
-  color: #2c3e50;
-
-  &.router-link-active {
-    color: #2c3e50;
-  }
 }
 
 .logoutButton {
