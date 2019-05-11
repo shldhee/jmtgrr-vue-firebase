@@ -84,6 +84,10 @@ npm run serve
   - `NProgress.start()` 하고 라우트 레코드 meta 검사하여 로그인 권한이 필요한 페이지 분기처리할때
   - `login, join`에서는 component안에 적용
 
+- getJMTZ에 아무것도 없을때 워닝 required때문인듯 확인 요망
+- `this.$emit('input', event.target.value)` `input`에 대해 다시 보기
+  - 해결 : `v-model`이 `input` 이벤트를 받는다.
+
 ### Done
 
 - LOGIN 버튼 누르면 바로 넘어감 또는 기존 DB 가지고 있음(로그아웃시)
@@ -118,3 +122,7 @@ npm run serve
 
   - 해결 : **router.replace 사용**
     - https://router.vuejs.org/kr/guide/essentials/navigation.html
+
+- 속성 바인딩
+  - `v-bind:categories="categories`를 통해 자식에 `BaseSelect`에 전달
+    - `categories="categories"`가 되는줄알았는데 문자열만 가능

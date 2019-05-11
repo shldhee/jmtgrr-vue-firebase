@@ -18,7 +18,7 @@
       class="group"
     />
 
-    <button type="submit" name="button">JOIN</button>
+    <BaseButton type="submit">Join</BaseButton>
   </form>
 </template>
 

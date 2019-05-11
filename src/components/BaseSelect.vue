@@ -1,7 +1,14 @@
 <template>
   <div class>
     <label v-if="label" :for="label">{{ title }}</label>
-    <input :value="value" @input="updateValue" :id="label" v-bind="$attrs" />
+    <select :value="value" @change="updateValue" v-bind="$attrs">
+      <option
+        v-for="category in categories"
+        :value="category"
+        :key="category"
+        >{{ category }}</option
+      >
+    </select>
   </div>
 </template>
 
@@ -9,6 +16,10 @@
 export default {
   inheritAttrs: false,
   props: {
+    categories: {
+      type: Array,
+      required: true
+    },
     value: [String, Number],
     title: {
       type: String,

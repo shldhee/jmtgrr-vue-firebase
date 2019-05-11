@@ -1,16 +1,24 @@
 <template>
   <form @submit.prevent="create">
-    <div class="group">
+    <!-- <div class="group">
       <label for>종류</label>
       <select v-model="JMTZObject.category">
-        <option>한식</option>
-        <option>양식</option>
-        <option>일식</option>
-        <option>중식</option>
-        <option>분식</option>
-        <option>기타</option>
+        <option
+          v-for="category in categories"
+          :value="category"
+          :key="category"
+          >{{ category }}</option
+        >
       </select>
-    </div>
+    </div>-->
+
+    <BaseSelect
+      label="category"
+      title="종류"
+      v-model="JMTZObject.category"
+      :categories="categories"
+      class="group"
+    />
 
     <BaseInput
       label="name"
@@ -57,14 +65,15 @@
       class="group"
     />
 
-    <div class="group">
-      <label for>추천/비추천</label>
-      <select v-model="JMTZObject.like">
-        <option>추천</option>
-        <option>비추천</option>
-      </select>
-    </div>
-    <button type="submit" value="등록">등록</button>
+    <BaseSelect
+      label="like"
+      title="추천/비추천"
+      v-model="JMTZObject.like"
+      :categories="like"
+      class="group"
+    />
+
+    <BaseButton type="submit">등록</BaseButton>
   </form>
 </template>
 
@@ -72,7 +81,9 @@
 export default {
   data() {
     return {
-      JMTZObject: this.createFreshJMTZObject()
+      JMTZObject: this.createFreshJMTZObject(),
+      categories: ['한식', '양식', '일식', '중식', '분식', '기타'],
+      like: ['추천', '비추천']
     }
   },
   methods: {

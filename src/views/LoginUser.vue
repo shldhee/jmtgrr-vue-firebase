@@ -17,7 +17,7 @@
       type="password"
       class="group"
     />
-    <button type="submit" name="button">LOGIN</button>
+    <BaseButton type="submit">Login</BaseButton>
   </form>
 </template>
 
