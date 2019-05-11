@@ -1,16 +1,39 @@
 <template>
   <div>
     <h1>Load Items</h1>
-    <div v-for="JMTZ in getJMTZs" :key="JMTZ.user">
-      {{ JMTZ.email }}
-      {{ JMTZ.category }}
-      {{ JMTZ.name }}
-      {{ JMTZ.menu }}
-      {{ JMTZ.price }}
-      {{ JMTZ.location }}
-      {{ JMTZ.memo }}
-      {{ JMTZ.like }}
-    </div>
+    <table>
+      <colgroup>
+        <col style="width:" />
+        <col style="width:" />
+        <col style="width:" />
+        <col style="width:" />
+        <col style="width:" />
+        <col style="width:" />
+        <col style="width:" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th>category</th>
+          <th>name</th>
+          <th>menu</th>
+          <th>price</th>
+          <th>location</th>
+          <th>memo</th>
+          <th>like</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="JMTZ in getJMTZs" :key="JMTZ.user">
+          <td>{{ JMTZ.category }}</td>
+          <td>{{ JMTZ.name }}</td>
+          <td>{{ JMTZ.menu }}</td>
+          <td>{{ JMTZ.price }}</td>
+          <td>{{ JMTZ.location }}</td>
+          <td>{{ JMTZ.memo }}</td>
+          <td>{{ JMTZ.like }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 

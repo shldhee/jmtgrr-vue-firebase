@@ -20,11 +20,17 @@ npm run serve
   - `<BaseInput></BaseInput>` 클래스를 넣었는데 `input`에 적용되지 않고 `<div>`왜 적용될까?
   - `inheritAttrs` : this option does not affect class and style bindings.
 - form validation
+
+  - vuelidate 사용
+  - @blur, \$linsters 이벤트 충돌, computed로 해결
+  - validations, JMTZObject로 접근
+  - blur : 클릭했다 나가면, 즉 한번 터치하고 나가게 되면 touch 적용
+    - 그러면 \$dirty true 말그대로 더럽게됐다. 한번 건들였다.
+    - $error : this.$dirty && !this.$pending && this.$invalid. 여기서 dirty, invalid 사용해 에러 발생. 처음 로드되자마자 에러 메세지 뜨면 안되니 터치된 후 적용하기
+
+- List styling
 - api 호출 시 성공, 실패 알림
-
-  - form
-  - login, join
-
+- 중복 이메일
 - 개인 취향 그래프? 도형?
 - 음식고르기 랜덤
 
