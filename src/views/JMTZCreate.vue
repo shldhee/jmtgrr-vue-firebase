@@ -6,7 +6,14 @@
       v-model="JMTZObject.category"
       :categories="categories"
       class="group"
+      :class="{ error: $v.JMTZObject.category.$error }"
+      @blur="$v.JMTZObject.category.$touch()"
     />
+    <template v-if="$v.JMTZObject.category.$error">
+      <p v-if="!$v.JMTZObject.category.required" class="message_err">
+        category is required.
+      </p>
+    </template>
 
     <BaseInput
       label="name"
@@ -15,7 +22,14 @@
       placeholder="가게 이름을 입력하세요"
       type="text"
       class="group"
+      :class="{ error: $v.JMTZObject.name.$error }"
+      @blur="$v.JMTZObject.name.$touch()"
     />
+    <template v-if="$v.JMTZObject.name.$error">
+      <p v-if="!$v.JMTZObject.name.required" class="message_err">
+        name is required.
+      </p>
+    </template>
 
     <BaseInput
       label="menu"
@@ -24,7 +38,14 @@
       placeholder="메뉴 이름을 입력하세요"
       type="text"
       class="group"
+      :class="{ error: $v.JMTZObject.menu.$error }"
+      @blur="$v.JMTZObject.menu.$touch()"
     />
+    <template v-if="$v.JMTZObject.menu.$error">
+      <p v-if="!$v.JMTZObject.menu.required" class="message_err">
+        menu is required.
+      </p>
+    </template>
 
     <BaseInput
       label="price"
@@ -33,7 +54,15 @@
       placeholder="가격을 입력하세요"
       type="text"
       class="group"
+      :class="{ error: $v.JMTZObject.price.$error }"
+      @blur="$v.JMTZObject.price.$touch()"
     />
+    <template v-if="$v.JMTZObject.price.$error">
+      <p v-if="!$v.JMTZObject.price.numeric" class="message_err">Only Number</p>
+      <p v-if="!$v.JMTZObject.price.required" class="message_err">
+        price is required.
+      </p>
+    </template>
 
     <BaseInput
       label="location"
@@ -42,7 +71,14 @@
       placeholder="장소를 입력하세요"
       type="text"
       class="group"
+      :class="{ error: $v.JMTZObject.location.$error }"
+      @blur="$v.JMTZObject.location.$touch()"
     />
+    <template v-if="$v.JMTZObject.location.$error">
+      <p v-if="!$v.JMTZObject.location.required" class="message_err">
+        location is required.
+      </p>
+    </template>
 
     <BaseInput
       label="memo"
@@ -59,13 +95,24 @@
       v-model="JMTZObject.like"
       :categories="like"
       class="group"
+      :class="{ error: $v.JMTZObject.like.$error }"
+      @blur="$v.JMTZObject.like.$touch()"
     />
+    <template v-if="$v.JMTZObject.like.$error">
+      <p v-if="!$v.JMTZObject.like.required" class="message_err">
+        like is required.
+      </p>
+    </template>
 
-    <BaseButton type="submit">등록</BaseButton>
+    <BaseButton :disabled="$v.$anyError" type="submit">등록</BaseButton>
+    <p v-if="$v.$anyError" class="message_err">
+      Please fill out the required field(s).
+    </p>
   </form>
 </template>
 
 <script>
+import { required, numeric } from 'vuelidate/lib/validators'
 export default {
   data() {
     return {
@@ -74,12 +121,25 @@ export default {
       like: ['추천', '비추천']
     }
   },
+  validations: {
+    JMTZObject: {
+      category: { required },
+      name: { required },
+      menu: { required },
+      price: { required, numeric },
+      location: { required },
+      like: { required }
+    }
+  },
   methods: {
     create() {
-      this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
-        this.$router.push({ name: 'jmtzlist' })
-        this.JMTZObject = this.createFreshJMTZObject()
-      })
+      this.$v.$touch()
+      if (!this.$v.$invalid) {
+        this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
+          this.$router.push({ name: 'jmtzlist' })
+          this.JMTZObject = this.createFreshJMTZObject()
+        })
+      }
     },
     createFreshJMTZObject() {
       const email = this.$store.state.user.user.user.email

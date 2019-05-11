@@ -1,7 +1,12 @@
 <template>
   <div class>
     <label v-if="label" :for="label">{{ title }}</label>
-    <select :value="value" @change="updateValue" v-bind="$attrs">
+    <select
+      :value="value"
+      @change="updateValue"
+      v-bind="$attrs"
+      v-on="listeners"
+    >
       <option
         v-for="category in categories"
         :value="category"
@@ -29,8 +34,19 @@ export default {
       type: String
     }
   },
+  computed: {
+    listeners() {
+      return {
+        ...this.$listeners,
+        input: this.updateValue
+      }
+    }
+  },
   methods: {
     updateValue(event) {
+      console.log(event)
+      console.log(event.target)
+      console.log(event.target.value)
       this.$emit('input', event.target.value)
     }
   }
