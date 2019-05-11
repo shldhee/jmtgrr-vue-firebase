@@ -19,8 +19,8 @@ npm run serve
 - BaseComponent 글로벌로 사용하기
   - `<BaseInput></BaseInput>` 클래스를 넣었는데 `input`에 적용되지 않고 `<div>`왜 적용될까?
   - `inheritAttrs` : this option does not affect class and style bindings.
-- api 호출 시 성공, 실패 알림
 - form validation
+- api 호출 시 성공, 실패 알림
 
   - form
   - login, join
@@ -86,7 +86,14 @@ npm run serve
 
 - getJMTZ에 아무것도 없을때 워닝 required때문인듯 확인 요망
 - `this.$emit('input', event.target.value)` `input`에 대해 다시 보기
+
   - 해결 : `v-model`이 `input` 이벤트를 받는다.
+
+- input validate error
+  - v-model에서 신택스슈가에서
+    :value="event.title"
+    @input="(value) => { event.title = value }" 이걸로 input 이벤트 발생하는데
+    v-on="\$listeneres"로 다시 input를 받으니깐 중복!
 
 ### Done
 

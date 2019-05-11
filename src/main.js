@@ -6,7 +6,9 @@ import firebase from 'firebase'
 import 'nprogress/nprogress.css'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+import Vuelidate from 'vuelidate'
 
+Vue.use(Vuelidate)
 Vue.config.productionTip = false
 
 // Initialize Firebase

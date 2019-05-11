@@ -1,17 +1,5 @@
 <template>
   <form @submit.prevent="create">
-    <!-- <div class="group">
-      <label for>종류</label>
-      <select v-model="JMTZObject.category">
-        <option
-          v-for="category in categories"
-          :value="category"
-          :key="category"
-          >{{ category }}</option
-        >
-      </select>
-    </div>-->
-
     <BaseSelect
       label="category"
       title="종류"

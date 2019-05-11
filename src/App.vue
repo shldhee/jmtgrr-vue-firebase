@@ -53,6 +53,14 @@ button {
     background-color: #df5c48;
     box-shadow: 0 0.4rem 0 0 #d3523e;
   }
+
+  &:disabled,
+  &[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    box-shadow: 0 0.4rem 0 0 #777777;
+  }
 }
 
 .form {
@@ -95,16 +103,14 @@ button {
     background: #fff
       url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuMjQpOyIvPjwvc3ZnPg==)
       no-repeat right 12px center;
-
-    // &:after {
-    //   content: '';
-    //   position: absolute;
-    //   width: 0;
-    //   height: 0;
-    //   border-style: solid;
-    //   border-width: 100px 100px 0 100px;
-    //   border-color: #007bff transparent transparent transparent;
-    // }
   }
+}
+
+.message_err {
+  color: orangered;
+}
+
+.error {
+  border: 1px solid orangered;
 }
 </style>
