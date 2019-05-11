@@ -1,13 +1,22 @@
 <template>
   <form @submit.prevent="login">
-    <div class="group">
-      <label for="userId">email</label>
-      <input v-model="email" type="text" name="userEmail" id="userEmail" />
-    </div>
-    <div class="group">
-      <label for="userPwd">pasword</label>
-      <input v-model="password" type="password" name="userPwd" id="userPwd" />
-    </div>
+    <BaseInput
+      label="userEmail"
+      title="email"
+      v-model="email"
+      placeholder="이메일을 입력해주세요"
+      type="text"
+      class="group"
+    />
+
+    <BaseInput
+      label="userPwd"
+      title="password"
+      v-model="password"
+      placeholder="비밀번호를 입력해주세요"
+      type="password"
+      class="group"
+    />
     <button type="submit" name="button">LOGIN</button>
   </form>
 </template>

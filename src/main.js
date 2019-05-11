@@ -4,6 +4,8 @@ import router from './router'
 import store from './vuex/store'
 import firebase from 'firebase'
 import 'nprogress/nprogress.css'
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
 
 Vue.config.productionTip = false
 
@@ -19,6 +21,22 @@ var firebaseConfig = {
   appId: '1:455230855717:web:86ec32e2ad834086'
 }
 firebase.initializeApp(firebaseConfig)
+
+const requireComponent = require.context(
+  './components',
+  false,
+  /Base[A-Z]\w+\.(vue|js)$/
+)
+
+requireComponent.keys().forEach(fileName => {
+  const componentConfig = requireComponent(fileName)
+
+  const componentName = upperFirst(
+    camelCase(fileName.replace(/^\.\/(.*)\.\w+$/, '$1'))
+  )
+
+  Vue.component(componentName, componentConfig.default || componentConfig)
+})
 
 new Vue({
   router,

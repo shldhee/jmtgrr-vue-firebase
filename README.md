@@ -17,6 +17,8 @@ npm run serve
 ### Todo
 
 - BaseComponent 글로벌로 사용하기
+  - `<BaseInput></BaseInput>` 클래스를 넣었는데 `input`에 적용되지 않고 `<div>`왜 적용될까?
+  - `inheritAttrs` : this option does not affect class and style bindings.
 - api 호출 시 성공, 실패 알림
 - form validation
 
@@ -26,7 +28,7 @@ npm run serve
 - 개인 취향 그래프? 도형?
 - 음식고르기 랜덤
 
-### Problem & Done
+### Problem
 
 - `rootState` `Vuex` 최상위 전체에서 접근 가능
   - `modeuls`에 `state` 접근할때 사용할때 사용
@@ -82,34 +84,36 @@ npm run serve
   - `NProgress.start()` 하고 라우트 레코드 meta 검사하여 로그인 권한이 필요한 페이지 분기처리할때
   - `login, join`에서는 component안에 적용
 
+### Done
+
 - LOGIN 버튼 누르면 바로 넘어감 또는 기존 DB 가지고 있음(로그아웃시)
-  - 로그아웃시 로그인 화면으로 넘어감
-  - 로그인 권한 있는 페이지에서 로그아웃 해도 로그인 화면으로 넘어감
-    - 해결 : `router meta 사용`
-      ```js
-      meta: {
-          authRequired: true
-      },
-      router.beforeEach((routeTo, routeFrom, next) => {
-          NProgress.start()
-          // console.log(authComputed.loggedIn())
-          // console.log({ ...authComputed })
-          // console.log(!authComputed.loggedIn())
-          // console.log(store.state.user.isAuthenticated)
-          // console.log(!store.state.user.isAuthenticated)
-          if (routeTo.matched.some(record => record.meta.authRequired)) {
-              if (!store.state.user.isAuthenticated) {
-              next({
-                  path: '/login'
-              })
-              } else {
-              next()
-              }
-          } else {
-              next()
-          }
-          })
-      ```
+- 로그아웃시 로그인 화면으로 넘어감
+- 로그인 권한 있는 페이지에서 로그아웃 해도 로그인 화면으로 넘어감
+  - 해결 : `router meta 사용`
+    ```js
+    meta: {
+        authRequired: true
+    },
+    router.beforeEach((routeTo, routeFrom, next) => {
+        NProgress.start()
+        // console.log(authComputed.loggedIn())
+        // console.log({ ...authComputed })
+        // console.log(!authComputed.loggedIn())
+        // console.log(store.state.user.isAuthenticated)
+        // console.log(!store.state.user.isAuthenticated)
+        if (routeTo.matched.some(record => record.meta.authRequired)) {
+            if (!store.state.user.isAuthenticated) {
+            next({
+                path: '/login'
+            })
+            } else {
+            next()
+            }
+        } else {
+            next()
+        }
+        })
+    ```
 - LOGIN 후 뒤로가기 할때 다시 로그인 페이지 나옴
 
   - 해결 : **router.replace 사용**
