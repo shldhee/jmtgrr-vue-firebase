@@ -17,7 +17,7 @@ export const mutations = {
 }
 
 export const actions = {
-  join({ commit }, { email, password }) {
+  join({ commit, dispatch }, { email, password }) {
     return firebaseService
       .createUser(email, password)
       .then(user => {
@@ -26,12 +26,17 @@ export const actions = {
       })
       .catch(error => {
         console.log('There was an error in join(store.js) : ', error)
+        const notification = {
+          type: 'error',
+          message: 'There was a problem create : ' + error.message
+        }
+        dispatch('notification/add', notification, { root: true })
         commit('SET_USER', null)
         commit('SET_IS_AUTHENTICATED', false)
         throw error
       })
   },
-  login({ commit }, { email, password }) {
+  login({ commit, dispatch }, { email, password }) {
     return firebaseService
       .signIn(email, password)
       .then(user => {
@@ -39,7 +44,12 @@ export const actions = {
         commit('SET_IS_AUTHENTICATED', true)
         localStorage.setItem('KEY', user.user.uid)
       })
-      .catch(() => {
+      .catch(error => {
+        const notification = {
+          type: 'error',
+          message: 'There was a problem create : ' + error.message
+        }
+        dispatch('notification/add', notification, { root: true })
         commit('SET_USER', null)
         commit('SET_IS_AUTHENTICATED', false)
       })
