@@ -29,8 +29,10 @@ npm run serve
     - $error : this.$dirty && !this.$pending && this.$invalid. 여기서 dirty, invalid 사용해 에러 발생. 처음 로드되자마자 에러 메세지 뜨면 안되니 터치된 후 적용하기
 
 - List styling
-- api 호출 시 성공, 실패 알림
-- 중복 이메일
+- api 호출 시 성공, 실패 알림, 중복 이메일
+    - `NotificationContainer, NotificationBar` 컴포넌트 생성하여 `dispatch-> commit`으로 Vuex 관리
+
+
 - 개인 취향 그래프? 도형?
 - 음식고르기 랜덤
 

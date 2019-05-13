@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Load Items</h1>
+    <p>{{ getJMTZsToFilter }}</p>
     <table>
       <colgroup>
         <col style="width:" />
@@ -39,6 +40,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      newJMTZ: []
+    }
+  },
   created() {
     console.log('Created!!')
   },
@@ -52,6 +58,15 @@ export default {
       default: function() {
         return {}
       }
+    }
+  },
+  computed: {
+    getJMTZsToFilter() {
+      let newArray = []
+      Object.keys(this.getJMTZs).forEach(prop => {
+        newArray.push(this.getJMTZs[prop].category)
+      })
+      return newArray
     }
   }
 }
