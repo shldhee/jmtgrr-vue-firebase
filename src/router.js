@@ -37,9 +37,7 @@ const router = new Router({
         authRequired: true
       },
       beforeEnter(routeTo, routeFrom, next) {
-        console.log(1234)
         store.dispatch('getJMTZs').then(getJMTZs => {
-          console.log(getJMTZs)
           routeTo.params.getJMTZs = getJMTZs
           next()
         })

@@ -29,13 +29,19 @@ export default new Vuex.Store({
         .addJMTZ({ rootState }, payload)
         .then(() => {
           commit('SET_JMTZ', payload)
+          const notification = {
+            type: 'success',
+            message: 'Your jmtz has been created!'
+          }
+          dispatch('notification/add', notification, { root: true })
         })
         .catch(error => {
           const notification = {
             type: 'error',
-            message: 'There was a problem create : ' + error.message
+            message: '오류가 발생했습니다. : ' + error.message
           }
           dispatch('notification/add', notification, { root: true })
+          throw error
         })
     },
     getJMTZs({ rootState, dispatch, commit }) {
@@ -43,6 +49,11 @@ export default new Vuex.Store({
         .getJMTZ({ rootState })
         .once('value')
         .then(snapshot => {
+          const notification = {
+            type: 'success',
+            message: 'Your jmtz has been loaded'
+          }
+          dispatch('notification/add', notification, { root: true })
           commit('GET_JMTZS', snapshot.val())
           return snapshot.val()
         })

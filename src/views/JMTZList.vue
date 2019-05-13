@@ -48,7 +48,10 @@ export default {
   props: {
     getJMTZs: {
       type: Object,
-      required: true
+      required: true,
+      default: function() {
+        return {}
+      }
     }
   }
 }

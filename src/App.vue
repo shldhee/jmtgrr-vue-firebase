@@ -1,15 +1,17 @@
 <template>
   <div id="app">
     <app-nav />
+    <NotificationContainer />
     <router-view class="form" />
   </div>
 </template>
 
 <script>
-import AppNav from './components/AppNav'
+import AppNav from '@/components/AppNav'
+import NotificationContainer from './components/NotificationContainer'
 
 export default {
-  components: { AppNav }
+  components: { AppNav, NotificationContainer }
 }
 </script>
 

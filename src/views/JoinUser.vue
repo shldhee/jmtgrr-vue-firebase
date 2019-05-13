@@ -80,9 +80,8 @@ export default {
             // this.$router.push({ name: 'jmtzcreate' })
             this.$router.replace({ name: 'jmtzcreate' })
           })
-          .catch(error => {
+          .catch(() => {
             NProgress.done()
-            console.log('There was an error in JoinUser : ', error.message)
           })
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div class>
     <label v-if="label" :for="label">{{ title }}</label>
-    <input :value="value" :id="label" v-bind="$attrs" v-on="listeners">
+    <input :value="value" :id="label" v-bind="$attrs" v-on="listeners" />
   </div>
 </template>
 
