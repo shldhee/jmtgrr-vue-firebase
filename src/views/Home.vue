@@ -1,14 +1,13 @@
 <template>
   <div class="home">
-    Home
-    <ChartDonut />
+    <h1>혼자만 알고 싶은 존맛탱집</h1>
   </div>
 </template>
 
-<script>
-import ChartDonut from '@/components/ChartDonut.vue'
+<script></script>
 
-export default {
-  components: { ChartDonut }
+<style lang="scss" scoped>
+h1 {
+  text-align: center;
 }
-</script>
+</style>

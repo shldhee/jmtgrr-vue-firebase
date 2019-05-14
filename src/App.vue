@@ -84,19 +84,32 @@ button {
 
   label {
     font-size: 2.6rem;
+    color: #acacac;
+    letter-spacing: 4px;
   }
 
   input,
   select {
     display: block;
     text-align: left;
-    height: 5.2rem;
+    height: 6.2rem;
     width: 100%;
     margin-top: 0.8rem;
     padding: 0 1rem;
     font-size: 2rem;
     box-sizing: border-box;
     vertical-align: middle;
+    border-radius: 1rem;
+    color: #d3d9fe;
+    background-color: #58626e;
+    border: 1px solid #58626e;
+    outline: none;
+  }
+  input::selected {
+    background-color: #58626e;
+  }
+  input::placeholder {
+    color: #d3d9fe;
   }
 
   select {
@@ -104,7 +117,7 @@ button {
     -moz-appearance: none;
     appearance: none;
 
-    background: #fff
+    background: #58626e
       url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuMjQpOyIvPjwvc3ZnPg==)
       no-repeat right 12px center;
   }
