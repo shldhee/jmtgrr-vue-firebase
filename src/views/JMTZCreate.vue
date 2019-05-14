@@ -11,7 +11,7 @@
     />
     <template v-if="$v.JMTZObject.category.$error">
       <p v-if="!$v.JMTZObject.category.required" class="message_err">
-        category is required.
+        음식 종류를 입력해주세요
       </p>
     </template>
 
@@ -27,7 +27,7 @@
     />
     <template v-if="$v.JMTZObject.name.$error">
       <p v-if="!$v.JMTZObject.name.required" class="message_err">
-        name is required.
+        가게 이름을 입력해주세요
       </p>
     </template>
 
@@ -43,7 +43,7 @@
     />
     <template v-if="$v.JMTZObject.menu.$error">
       <p v-if="!$v.JMTZObject.menu.required" class="message_err">
-        menu is required.
+        메뉴를 입력해주세요
       </p>
     </template>
 
@@ -60,7 +60,7 @@
     <template v-if="$v.JMTZObject.price.$error">
       <p v-if="!$v.JMTZObject.price.numeric" class="message_err">Only Number</p>
       <p v-if="!$v.JMTZObject.price.required" class="message_err">
-        price is required.
+        가격을 입력해주세요
       </p>
     </template>
 
@@ -76,7 +76,7 @@
     />
     <template v-if="$v.JMTZObject.location.$error">
       <p v-if="!$v.JMTZObject.location.required" class="message_err">
-        location is required.
+        장소를 입력해주세요
       </p>
     </template>
 
@@ -100,13 +100,13 @@
     />
     <template v-if="$v.JMTZObject.like.$error">
       <p v-if="!$v.JMTZObject.like.required" class="message_err">
-        like is required.
+        추천/비추천을 선택해주세요
       </p>
     </template>
 
     <BaseButton :disabled="$v.$anyError" type="submit">등록</BaseButton>
     <p v-if="$v.$anyError" class="message_err">
-      Please fill out the required field(s).
+      필수 입력을 채워주세요
     </p>
   </form>
 </template>

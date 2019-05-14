@@ -31,7 +31,7 @@ export default new Vuex.Store({
           commit('SET_JMTZ', payload)
           const notification = {
             type: 'success',
-            message: 'Your jmtz has been created!'
+            message: '존맛탱집이 생성되었습니다.'
           }
           dispatch('notification/add', notification, { root: true })
         })
@@ -51,7 +51,7 @@ export default new Vuex.Store({
         .then(snapshot => {
           const notification = {
             type: 'success',
-            message: 'Your jmtz has been loaded'
+            message: '존맛탱집 리스트를 정상적으로 불러왔습니다.'
           }
           dispatch('notification/add', notification, { root: true })
           commit('GET_JMTZS', snapshot.val())
@@ -60,7 +60,7 @@ export default new Vuex.Store({
         .catch(error => {
           const notification = {
             type: 'error',
-            message: 'There was a problem create : ' + error.message
+            message: '오류가 발생했습니다. : ' + error.message
           }
           dispatch('notification/add', notification, { root: true })
         })

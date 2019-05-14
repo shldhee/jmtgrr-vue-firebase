@@ -13,9 +13,11 @@
 
     <template v-if="$v.email.$error">
       <p v-if="!$v.email.email" class="message_err">
-        Please enter a valid email address.
+        유효한 이메일 주소를 입력해주세요
       </p>
-      <p v-if="!$v.email.required" class="message_err">Email is required.</p>
+      <p v-if="!$v.email.required" class="message_err">
+        이메일은 필수 입력 사항입니다
+      </p>
     </template>
 
     <BaseInput
@@ -31,16 +33,16 @@
 
     <template v-if="$v.password.$error">
       <p v-if="!$v.password.minLength" class="message_err">
-        Please enter a valid password minLength(6).
+        비밀번호는 최소 6자 이상입니다
       </p>
       <p v-if="!$v.password.required" class="message_err">
-        Password is required.
+        비밀번호는 필수 입력 사항입니다
       </p>
     </template>
 
     <BaseButton :disabled="$v.$anyError" type="submit">Join</BaseButton>
     <p v-if="$v.$anyError" class="message_err">
-      Please fill out the required field(s).
+      필수 입력 사항을 채워주세요
     </p>
   </form>
 </template>

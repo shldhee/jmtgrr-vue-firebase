@@ -40,6 +40,10 @@ npm run serve
     - https://vue-chartjs.org/guide/#troubleshooting
     - https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
 - 음식고르기 랜덤
+- 전체 리스트 공유
+- 이메일 인증
+- 비밀번호 찾기
+- 리스트 수정
 
 ### Problem
 
