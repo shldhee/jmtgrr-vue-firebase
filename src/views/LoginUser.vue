@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="login">
+  <form class="form" @submit.prevent="login">
     <BaseInput
       label="userEmail"
       title="email"

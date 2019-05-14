@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="join">
+  <form class="form" @submit.prevent="join">
     <BaseInput
       label="userEmail"
       title="email"

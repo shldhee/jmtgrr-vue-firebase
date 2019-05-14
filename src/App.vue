@@ -2,7 +2,7 @@
   <div id="app">
     <app-nav />
     <NotificationContainer />
-    <router-view class="form" />
+    <router-view />
   </div>
 </template>
 
@@ -28,7 +28,7 @@ body {
   color: #2c3e50;
   margin: 0 auto;
   padding: 0;
-  max-width: 64rem;
+  max-width: 90rem;
   width: 100%;
 }
 
@@ -67,6 +67,8 @@ button {
 
 .form {
   // width: 90%;
+  max-width: 640px;
+  margin: 0 auto;
   padding: 3rem;
   display: flex;
   flex-direction: column;

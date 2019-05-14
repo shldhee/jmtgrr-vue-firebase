@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="create">
+  <form class="form" @submit.prevent="create">
     <BaseSelect
       label="category"
       title="종류"
