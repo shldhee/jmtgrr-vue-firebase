@@ -34,6 +34,11 @@ npm run serve
 
 
 - 개인 취향 그래프? 도형?
+    - 
+    - 참고
+    - https://www.chartjs.org/docs/latest/charts/doughnut.html
+    - https://vue-chartjs.org/guide/#troubleshooting
+    - https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
 - 음식고르기 랜덤
 
 ### Problem

@@ -1,8 +1,11 @@
 <template>
   <div>
     <h1>Load Items</h1>
-    <p>{{ dataChart }}</p>
-    <ChartDonut :chartData="dataChart" :options="chartOptions" />
+    <ChartDonut
+      :chartData="dataChart"
+      :options="optionChart"
+      :styles="chartStyle"
+    />
     <table>
       <colgroup>
         <col style="width:" />
@@ -42,22 +45,69 @@
 <script>
 import ChartDonut from '@/components/ChartDonut'
 export default {
+  data() {
+    return {
+      chartStyle: {
+        width: '100vw',
+        height: '400px',
+        position: 'relative'
+      }
+    }
+  },
   components: {
     ChartDonut
   },
   computed: {
     dataChart() {
-      let dataObject = {
-        labels: [],
-        datasets: []
-      }
-      let newArray = []
+      let dataLabels = []
+      let dataNumbers = []
+      let dataObject = {}
+      let nameArray = []
+      let objToCalc = {}
+
       Object.keys(this.getJMTZs).forEach(prop => {
-        newArray.push(this.getJMTZs[prop].category)
+        nameArray.push(this.getJMTZs[prop].category)
       })
 
-      dataObject.labels = newArray
+      nameArray.forEach(value => {
+        if (!objToCalc[value]) {
+          objToCalc[value] = 1
+        } else {
+          objToCalc[value] += 1
+        }
+      })
+
+      dataLabels = Object.keys(objToCalc)
+      dataNumbers = Object.values(objToCalc)
+
+      dataObject = {
+        labels: dataLabels,
+        datasets: [
+          {
+            data: dataNumbers,
+            backgroundColor: [
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ]
+          }
+        ]
+      }
+
       return dataObject
+    },
+    optionChart() {
+      return {
+        title: {
+          display: true,
+          text: '카테고리 통계'
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
     }
   },
   props: {
@@ -70,29 +120,4 @@ export default {
     }
   }
 }
-
-// data: {
-//         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//         datasets: [{
-//             label: '# of Votes',
-//             data: [12, 19, 3, 5, 2, 3],
-//             backgroundColor: [
-//                 'rgba(255, 99, 132, 0.2)',
-//                 'rgba(54, 162, 235, 0.2)',
-//                 'rgba(255, 206, 86, 0.2)',
-//                 'rgba(75, 192, 192, 0.2)',
-//                 'rgba(153, 102, 255, 0.2)',
-//                 'rgba(255, 159, 64, 0.2)'
-//             ],
-//             borderColor: [
-//                 'rgba(255, 99, 132, 1)',
-//                 'rgba(54, 162, 235, 1)',
-//                 'rgba(255, 206, 86, 1)',
-//                 'rgba(75, 192, 192, 1)',
-//                 'rgba(153, 102, 255, 1)',
-//                 'rgba(255, 159, 64, 1)'
-//             ],
-//             borderWidth: 1
-//         }]
-//     },
 </script>
