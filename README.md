@@ -1,6 +1,6 @@
 # 🐱JMTZ
 
-- 혼자만 알고 싶은 존맛탱 맛집 기록 with Vue, Firebase https://github.com/shldhee/jmtgrr-vue-firebase
+- 혼자만 알고 싶은 존맛탱 맛집 기록 with Vue, Firebase https://jmtgrr.firebaseapp.com
 - 가입, 로그인(로그아웃), 존맛탱집 작성, 존맛탱집 리스트
 
 ## 🐶개발 환경
