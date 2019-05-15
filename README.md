@@ -15,7 +15,7 @@
 ## 🐭설치 방법
 
 ```
-npm install☺
+npm install
 npm run serve
 ```
 
@@ -29,12 +29,12 @@ npm run serve
 
 ## 🐺해야 할 일
 
-- 음식고르기 랜덤(JMTZ LIST 개인)
-- 전체 리스트 공유(JTMZ ALL 생성)
-- 이메일 인증(FIREBASE 활용)
-- 비밀번호 찾기(FIREBASE 활용)
-- 리스트 수정
-- FIREBASE API KEY 확인
+ - [ ] 음식고르기 랜덤(JMTZ LIST 개인)
+ - [ ] 전체 리스트 공유(JTMZ ALL 생성)
+ - [ ] 이메일 인증(FIREBASE 활용)
+ - [ ] 비밀번호 찾기(FIREBASE 활용)
+ - [ ] 리스트 수정
+ - [ ] FIREBASE API KEY 확인
 
 ## 🐸문제
 
