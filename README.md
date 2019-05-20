@@ -114,6 +114,30 @@ npm run serve
 - LOGIN 버튼 누르면 바로 넘어감 또는 기존 DB 가지고 있음(로그아웃시), 로그아웃시 로그인 화면으로 넘어감, 로그인 권한 있는 페이지에서 로그아웃 해도 로그인 화면으로 넘어감
   - 해결 : `router meta 사용`
     ```js
+    // 예제
+    const router = new VueRouter({
+        routes: [
+            {
+            path: '/foo',
+            component: Foo,
+            children: [
+                {
+                path: 'bar',
+                component: Bar,
+                // 메타 필드
+                meta: { requiresAuth: true }
+                }
+            ]
+            }
+        ]
+    })
+    ```
+
+    - `routes` 객체를 **라우트 레코드**라고 합니다. 중첩이 가능, 따라서 `/foo/bar`의 경우는 `/foo`,`/bar` 둘다 일치
+    - `routeTo.matched`는 라우트와 일치하는 모든 라이트 코드를 배열로 노출, 여기서 meta 속성접근하여 검사
+
+
+    ```js
     meta: {
         authRequired: true
     },

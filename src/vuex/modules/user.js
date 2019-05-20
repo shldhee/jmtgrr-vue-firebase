@@ -13,6 +13,7 @@ export const mutations = {
   },
   SET_IS_AUTHENTICATED(state, payload) {
     state.isAuthenticated = payload
+    localStorage.accessToken = state.isAuthenticated
   }
 }
 export const actions = {
