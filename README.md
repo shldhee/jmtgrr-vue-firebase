@@ -83,6 +83,15 @@ npm run serve
   computed: mapState(['getJMTZs'])
   ```
 
+  - `/modules/user.js/`에 있는 state.user에 접근할떄(namespaced)
+    ```js
+    template
+    $store.state.user.user
+
+    script
+    this.$store.state.user.user
+    ```
+
 - **login유지**
   - firebase 세션 유지이용해야 될듯
   - 현재 localstorage로 하려다가 id, password 추가할려면 암호화해야 되므로 firebase로 설계를 다시 해야될듯하다.
