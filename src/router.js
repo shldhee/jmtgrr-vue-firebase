@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import JMTZCreate from './views/JMTZCreate.vue'
 import JMTZList from './views/JMTZList.vue'
+import JMTZAll from './views/JMTZAll.vue'
 import JoinUser from './views/JoinUser.vue'
 import LoginUser from './views/LoginUser.vue'
 import NotFound from './views/NotFound.vue'
@@ -39,6 +40,18 @@ const router = new Router({
       beforeEnter(routeTo, routeFrom, next) {
         store.dispatch('getJMTZs').then(getJMTZs => {
           routeTo.params.getJMTZs = getJMTZs
+          next()
+        })
+      }
+    },
+    {
+      path: '/jmtzall',
+      name: 'jmtzall',
+      component: JMTZAll,
+      props: true,
+      beforeEnter(routeTo, routeFrom, next) {
+        store.dispatch('getAllJMTZs').then(getAllJMTZs => {
+          routeTo.params.getAllJMTZs = getAllJMTZs
           next()
         })
       }

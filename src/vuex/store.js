@@ -13,11 +13,15 @@ export default new Vuex.Store({
   },
   state: {
     JMTZs: [],
-    getJMTZs: null
+    getJMTZs: null,
+    getAllJMTZs: null
   },
   mutations: {
     GET_JMTZS(state, payload) {
       state.getJMTZs = payload
+    },
+    GET_ALL_JMTZS(state, payload) {
+      state.getAllJMTZs = payload
     },
     SET_JMTZ(state, payload) {
       state.JMTZs.push(payload)
@@ -55,6 +59,27 @@ export default new Vuex.Store({
           }
           dispatch('notification/add', notification, { root: true })
           commit('GET_JMTZS', snapshot.val())
+          return snapshot.val()
+        })
+        .catch(error => {
+          const notification = {
+            type: 'error',
+            message: '오류가 발생했습니다. : ' + error.message
+          }
+          dispatch('notification/add', notification, { root: true })
+        })
+    },
+    getAllJMTZs({ rootState, dispatch, commit }) {
+      return firebaseService
+        .getAllJMTZ({ rootState })
+        .once('value')
+        .then(snapshot => {
+          const notification = {
+            type: 'success',
+            message: '존맛탱집 전체 리스트를 정상적으로 불러왔습니다.'
+          }
+          dispatch('notification/add', notification, { root: true })
+          commit('GET_ALL_JMTZS', snapshot.val())
           return snapshot.val()
         })
         .catch(error => {

@@ -30,5 +30,8 @@ export default {
   },
   getJMTZ({ rootState }) {
     return firebase.database().ref('users/' + rootState.user.user.user.uid)
+  },
+  getAllJMTZ() {
+    return firebase.database().ref('users/')
   }
 }

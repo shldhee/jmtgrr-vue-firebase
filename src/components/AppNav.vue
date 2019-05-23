@@ -3,6 +3,9 @@
     <router-link to="/">
       Home
     </router-link>
+    <router-link to="/jmtzall">
+      JMTZAll
+    </router-link>
     <template v-if="!loggedIn">
       <router-link to="/join">
         Join
