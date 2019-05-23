@@ -1,5 +1,6 @@
 <template>
   <form class="form" @submit.prevent="join">
+    <h1>가입하기</h1>
     <BaseInput
       label="userEmail"
       title="email"

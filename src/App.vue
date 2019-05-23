@@ -69,7 +69,7 @@ button {
   // width: 90%;
   max-width: 640px;
   margin: 0 auto;
-  padding: 3rem;
+  padding: 0 3rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;

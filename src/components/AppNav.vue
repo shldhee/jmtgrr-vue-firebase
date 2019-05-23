@@ -4,22 +4,22 @@
       Home
     </router-link>
     <router-link to="/jmtzall">
-      JMTZAll
+      JMTZ 리스트(전체)
     </router-link>
     <template v-if="!loggedIn">
       <router-link to="/join">
-        Join
+        가입
       </router-link>
       <router-link to="/login">
-        Login
+        로그인
       </router-link>
     </template>
     <template v-else>
       <router-link to="/jmtzcreate">
-        JMTZCreate
+        JMTZ 등록
       </router-link>
       <router-link to="/jmtzlist">
-        JMTZList
+        JMTZ 리스트(개인)
       </router-link>
       <a href="#;" @click="logout">Logout</a>
     </template>
@@ -30,20 +30,15 @@
 import { authComputed } from '../vuex/helpers.js'
 
 export default {
-  mounted() {
-    console.log('AppNav Mounted')
-  },
   computed: {
     ...authComputed
   },
   methods: {
     logout() {
-      console.log('Before dispatch user/logout')
       this.$store
         .dispatch('user/logout')
         .then(() => {
           this.$router.push({ name: 'home' })
-          console.log('after dispatch user/logout and Before router push')
         })
         .catch(error => {
           console.log('There was en error : ', error)
@@ -60,6 +55,7 @@ export default {
   min-height: 7rem;
   padding: 0.2em 1em;
   background: linear-gradient(to right, #d2527f, #d91e18);
+  margin-bottom: 5rem;
 }
 
 a {
