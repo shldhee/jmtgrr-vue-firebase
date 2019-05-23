@@ -22,7 +22,11 @@ export default {
       ...payload,
       id: key
     }
-    return myRef.push(newPayload)
+    return firebase
+      .database()
+      .ref('users')
+      .child(rootState.user.user.user.uid + `/${key}`)
+      .set(newPayload)
   },
   getJMTZ({ rootState }) {
     return firebase.database().ref('users/' + rootState.user.user.user.uid)
