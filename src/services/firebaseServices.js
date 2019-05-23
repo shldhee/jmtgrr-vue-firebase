@@ -11,11 +11,18 @@ export default {
     return firebase.auth().signOut()
   },
   addJMTZ({ rootState }, payload) {
-    return firebase
+    const myRef = firebase
       .database()
       .ref('users')
       .child(rootState.user.user.user.uid)
-      .push(payload)
+      .push()
+
+    const key = myRef.key
+    const newPayload = {
+      ...payload,
+      id: key
+    }
+    return myRef.push(newPayload)
   },
   getJMTZ({ rootState }) {
     return firebase.database().ref('users/' + rootState.user.user.user.uid)
