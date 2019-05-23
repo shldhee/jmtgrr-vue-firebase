@@ -2,6 +2,7 @@
   <div class="list">
     <h1>존맛탱집 리스트</h1>
     <ChartDonut
+      v-if="checkgetJMTZs"
       :chartData="dataChart"
       :options="optionChart"
       :styles="chartStyle"
@@ -109,15 +110,14 @@ export default {
         maintainAspectRatio: false,
         cutoutPercentage: 50
       }
+    },
+    checkgetJMTZs() {
+      return !!this.getJMTZs
     }
   },
   props: {
     getJMTZs: {
-      type: Object,
-      required: true,
-      default: function() {
-        return {}
-      }
+      type: [Object]
     }
   }
 }
