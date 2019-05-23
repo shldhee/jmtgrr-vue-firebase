@@ -183,3 +183,6 @@ npm run serve
     - https://www.chartjs.org/docs/latest/charts/doughnut.html
     - https://vue-chartjs.org/guide/#troubleshooting
     - https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/
+
+- FireBase 생성된 객체에 id에 key 값추가
+    - https://stackoverflow.com/questions/38768576/in-firebase-when-using-push-how-do-i-get-the-unique-id-and-store-in-my-databas
