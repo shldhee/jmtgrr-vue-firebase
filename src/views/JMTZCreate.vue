@@ -58,7 +58,9 @@
       @blur="$v.JMTZObject.price.$touch()"
     />
     <template v-if="$v.JMTZObject.price.$error">
-      <p v-if="!$v.JMTZObject.price.numeric" class="message_err">Only Number</p>
+      <p v-if="!$v.JMTZObject.price.numeric" class="message_err">
+        Only Number
+      </p>
       <p v-if="!$v.JMTZObject.price.required" class="message_err">
         가격을 입력해주세요
       </p>
@@ -104,6 +106,26 @@
       </p>
     </template>
 
+    <div
+      class="group"
+      :class="{ error: $v.JMTZObject.isOpen.$error }"
+      @blur="$v.JMTZObject.isOpen.$touch()"
+    >
+      <input
+        v-model="JMTZObject.isOpen"
+        type="checkbox"
+        name="isOpen"
+        id="isOpen"
+        value="true"
+      />
+      <label for="isOpen">이 게시물을 공개/비공개 여부를 체크해주세요.</label>
+    </div>
+    <template v-if="$v.JMTZObject.isOpen.$error">
+      <p v-if="!$v.JMTZObject.isOpen.required" class="message_err">
+        공개/비공개을 선택해주세요
+      </p>
+    </template>
+
     <BaseButton :disabled="$v.$anyError" type="submit">등록</BaseButton>
     <p v-if="$v.$anyError" class="message_err">
       필수 입력을 채워주세요
@@ -128,7 +150,8 @@ export default {
       menu: { required },
       price: { required, numeric },
       location: { required },
-      like: { required }
+      like: { required },
+      isOpen: { required }
     }
   },
   methods: {
@@ -150,6 +173,7 @@ export default {
         menu: '',
         price: '',
         location: '',
+        isOpen: '',
         memo: '',
         like: ''
       }
@@ -158,4 +182,19 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+input[type='checkbox'] {
+  display: none;
+}
+input[type='checkbox'] + label::before {
+  // content: '\F0C8';
+  content: '\F0C8';
+}
+input[type='checkbox']:checked + label::before {
+  // content: '\F14A';
+  content: 'V';
+}
+input[type='checkbox'] + label::before {
+  content: '';
+}
+</style>

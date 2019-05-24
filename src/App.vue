@@ -2,7 +2,9 @@
   <div id="app">
     <app-nav />
     <NotificationContainer />
-    <router-view />
+    <div class="main">
+      <router-view class="container" />
+    </div>
   </div>
 </template>
 
@@ -28,8 +30,22 @@ body {
   color: #2c3e50;
   margin: 0 auto;
   padding: 0;
-  max-width: 90rem;
+  // max-width: 90rem;
   width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
 }
 
 button {
@@ -65,10 +81,28 @@ button {
   }
 }
 
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  // background: linear-gradient(0deg, #e91e63, #d2517e 71.5%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 3rem auto;
+}
+
 .form {
+  flex-grow: 1;
   // width: 90%;
   max-width: 640px;
-  margin: 0 auto;
+  // margin: 0 auto;
   padding: 0 3rem 3rem;
   display: flex;
   flex-direction: column;

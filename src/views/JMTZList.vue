@@ -9,13 +9,15 @@
     />
     <table class="table">
       <colgroup>
+        <col style="width: 7%" />
+        <col style="width:" />
+        <col style="width: 11%" />
+        <col style="width: 12%" />
         <col style="width: 12%" />
         <col style="width:" />
-        <col style="width: 12%" />
-        <col style="width: 12%" />
-        <col style="width: 12%" />
-        <col style="width:" />
-        <col style="width: 15%" />
+        <col style="width: 9%" />
+        <col style="width: 9%" />
+        <col style="width: 5%" />
       </colgroup>
       <thead>
         <tr>
@@ -26,6 +28,8 @@
           <th class="table_title">위치</th>
           <th class="table_title">메모</th>
           <th class="table_title">추천/비추천</th>
+          <th class="table_title">공개/비공개</th>
+          <th class="table_title">삭제</th>
         </tr>
       </thead>
       <tbody>
@@ -37,9 +41,12 @@
           <td class="table_desc">{{ JMTZ.location }}</td>
           <td class="table_desc">{{ JMTZ.memo }}</td>
           <td class="table_desc">{{ JMTZ.like }}</td>
+          <td class="table_desc">{{ checkIsOpen(JMTZ.isOpen) }}</td>
+          <td class="table_desc"><button class="btn_del">삭제</button></td>
         </tr>
       </tbody>
     </table>
+    <!-- <div class="bg"></div> -->
   </div>
 </template>
 
@@ -119,6 +126,11 @@ export default {
     getJMTZs: {
       type: [Object]
     }
+  },
+  methods: {
+    checkIsOpen(isOpen) {
+      return isOpen ? '공개' : '비공개'
+    }
   }
 }
 </script>
@@ -148,5 +160,21 @@ export default {
     text-align: center;
     color: #999999;
   }
+}
+.bg {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  background: black;
+}
+
+.btn_del {
+  margin: 0;
+  padding: 0.5rem 1rem;
+  min-width: 6rem;
+  font-size: 1.4rem;
 }
 </style>

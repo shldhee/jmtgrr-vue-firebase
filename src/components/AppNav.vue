@@ -1,29 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">
-      Home
-    </router-link>
-    <router-link to="/jmtzall">
-      JMTZ 리스트(전체)
-    </router-link>
-    <template v-if="!loggedIn">
-      <router-link to="/join">
-        가입
+  <header class="header">
+    <nav class="nav">
+      <router-link to="/">
+        Home
       </router-link>
-      <router-link to="/login">
-        로그인
+      <router-link to="/jmtzall">
+        JMTZ 리스트(전체)
       </router-link>
-    </template>
-    <template v-else>
-      <router-link to="/jmtzcreate">
-        JMTZ 등록
-      </router-link>
-      <router-link to="/jmtzlist">
-        JMTZ 리스트(개인)
-      </router-link>
-      <a href="#;" @click="logout">Logout</a>
-    </template>
-  </div>
+      <template v-if="!loggedIn">
+        <router-link to="/join">
+          가입
+        </router-link>
+        <router-link to="/login">
+          로그인
+        </router-link>
+      </template>
+      <template v-else>
+        <router-link to="/jmtzcreate">
+          JMTZ 등록
+        </router-link>
+        <router-link to="/jmtzlist">
+          JMTZ 리스트(개인)
+        </router-link>
+        <a href="#;" @click="logout">Logout</a>
+      </template>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -49,13 +51,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#nav {
+.header {
+  // background: linear-gradient(to right, #d2527f, #d91e18);
+  background-color: #f3664e;
+}
+
+.nav {
   display: flex;
   align-items: center;
   min-height: 7rem;
   padding: 0.2em 1em;
-  background: linear-gradient(to right, #d2527f, #d91e18);
-  margin-bottom: 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  // margin-bottom: 5rem;
 }
 
 a {

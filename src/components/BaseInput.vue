@@ -9,7 +9,7 @@
 export default {
   inheritAttrs: false,
   props: {
-    value: [String, Number],
+    value: [String, Number, Boolean],
     title: {
       type: String,
       required: true
