@@ -19,7 +19,14 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      children: [
+        // {
+        //   path: '/homeLogin',
+        //   name: 'homeLogin',
+        //   component: LoginUser
+        // }
+      ]
     },
     {
       path: '/jmtzcreate',
@@ -47,14 +54,14 @@ const router = new Router({
     {
       path: '/jmtzall',
       name: 'jmtzall',
-      component: JMTZAll,
-      props: true,
-      beforeEnter(routeTo, routeFrom, next) {
-        store.dispatch('getAllJMTZs').then(getAllJMTZs => {
-          routeTo.params.getAllJMTZs = getAllJMTZs
-          next()
-        })
-      }
+      component: JMTZAll
+      // props: true,
+      // beforeEnter(routeTo, routeFrom, next) {
+      //   store.dispatch('getAllJMTZs').then(getAllJMTZs => {
+      //     routeTo.params.getAllJMTZs = getAllJMTZs
+      //     next()
+      //   })
+      // }
     },
     {
       path: '/join',
@@ -80,11 +87,6 @@ const router = new Router({
 
 router.beforeEach((routeTo, routeFrom, next) => {
   NProgress.start()
-  // console.log(authComputed.loggedIn())
-  // console.log({ ...authComputed })
-  // console.log(!authComputed.loggedIn())
-  // console.log(store.state.user.isAuthenticated)
-  // console.log(!store.state.user.isAuthenticated)
   if (routeTo.matched.some(record => record.meta.authRequired)) {
     if (!store.state.user.isAuthenticated) {
       next({

@@ -1,22 +1,16 @@
 <template>
   <div class="list">
     <h1>존맛탱집 전체 리스트</h1>
-    <ChartDonut
-      v-if="checkgetAllJMTZs"
-      :chartData="dataChart"
-      :options="optionChart"
-      :styles="chartStyle"
-    />
     <table class="table">
       <colgroup>
-        <col style="width:" />
-        <col style="width: 12%" />
-        <col style="width:" />
-        <col style="width: 12%" />
-        <col style="width: 12%" />
-        <col style="width: 12%" />
-        <col style="width:" />
-        <col style="width: 15%" />
+        <col style="width:">
+        <col style="width: 12%">
+        <col style="width:">
+        <col style="width: 12%">
+        <col style="width: 12%">
+        <col style="width: 12%">
+        <col style="width:">
+        <col style="width: 15%">
       </colgroup>
       <thead>
         <tr>
@@ -47,90 +41,22 @@
 </template>
 
 <script>
-import ChartDonut from '@/components/ChartDonut'
 export default {
   data() {
     return {
-      chartStyle: {
-        height: '400px',
-        margin: '2rem 0',
-        position: 'relative'
-      }
+      getAllJMTZsHome: this.$store.state.getAllJMTZs
     }
   },
-  components: {
-    ChartDonut
-  },
+  components: {},
   computed: {
     allArray() {
       let allArr = []
-      for (var key in this.getAllJMTZs) {
-        for (var childKey in this.getAllJMTZs[key]) {
-          allArr.push(this.getAllJMTZs[key][childKey])
+      for (var key in this.getAllJMTZsHome) {
+        for (var childKey in this.getAllJMTZsHome[key]) {
+          allArr.push(this.getAllJMTZsHome[key][childKey])
         }
       }
       return allArr
-    },
-    dataChart() {
-      let dataLabels = []
-      let dataNumbers = []
-      let dataObject = {}
-      let nameArray = []
-      let objToCalc = {}
-      let allArr = this.allArray
-
-      Object.keys(allArr).forEach(prop => {
-        nameArray.push(allArr[prop].category)
-      })
-
-      nameArray.forEach(value => {
-        if (!objToCalc[value]) {
-          objToCalc[value] = 1
-        } else {
-          objToCalc[value] += 1
-        }
-      })
-
-      dataLabels = Object.keys(objToCalc)
-      dataNumbers = Object.values(objToCalc)
-
-      dataObject = {
-        labels: dataLabels,
-        datasets: [
-          {
-            data: dataNumbers,
-            backgroundColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)'
-            ]
-          }
-        ]
-      }
-
-      return dataObject
-    },
-    optionChart() {
-      return {
-        title: {
-          display: true,
-          text: '좋아하는 음식 종류 통계'
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-        cutoutPercentage: 50
-      }
-    },
-    checkgetAllJMTZs() {
-      return !!this.getAllJMTZs
-    }
-  },
-  props: {
-    getAllJMTZs: {
-      type: [Object]
     }
   },
   methods: {

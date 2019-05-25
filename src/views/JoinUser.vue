@@ -42,9 +42,7 @@
     </template>
 
     <BaseButton :disabled="$v.$anyError" type="submit">Join</BaseButton>
-    <p v-if="$v.$anyError" class="message_err">
-      필수 입력 사항을 채워주세요
-    </p>
+    <p v-if="$v.$anyError" class="message_err">필수 입력 사항을 채워주세요</p>
   </form>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent="login">
+  <form class="form form_login" @submit.prevent="login">
     <h1>로그인</h1>
     <BaseInput
       label="userEmail"
@@ -13,12 +13,8 @@
     />
 
     <template v-if="$v.email.$error">
-      <p v-if="!$v.email.email" class="message_err">
-        유효한 이메일 주소를 입력해주세요
-      </p>
-      <p v-if="!$v.email.required" class="message_err">
-        이메일은 필수 입력 사항입니다
-      </p>
+      <p v-if="!$v.email.email" class="message_err">유효한 이메일 주소를 입력해주세요</p>
+      <p v-if="!$v.email.required" class="message_err">이메일은 필수 입력 사항입니다</p>
     </template>
 
     <BaseInput
@@ -33,18 +29,12 @@
     />
 
     <template v-if="$v.password.$error">
-      <p v-if="!$v.password.minLength" class="message_err">
-        비밀번호는 최소 6자 이상입니다
-      </p>
-      <p v-if="!$v.password.required" class="message_err">
-        비밀번호는 필수 입력 사항입니다
-      </p>
+      <p v-if="!$v.password.minLength" class="message_err">비밀번호는 최소 6자 이상입니다</p>
+      <p v-if="!$v.password.required" class="message_err">비밀번호는 필수 입력 사항입니다</p>
     </template>
 
     <BaseButton :disabled="$v.$anyError" type="submit">Login</BaseButton>
-    <p v-if="$v.$anyError" class="message_err">
-      필수 입력 사항을 채워주세요
-    </p>
+    <p v-if="$v.$anyError" class="message_err">필수 입력 사항을 채워주세요</p>
   </form>
 </template>
 
@@ -80,8 +70,9 @@ export default {
             password: this.password
           })
           .then(() => {
-            // this.$router.push({ name: 'jmtzlist' })
-            this.$router.replace({ name: 'jmtzlist' })
+            this.$store.dispatch('getAllJMTZs').then(() => {
+              this.$router.replace({ name: 'home' })
+            })
           })
           .catch(() => {
             NProgress.done()
@@ -91,3 +82,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.form_login {
+  box-sizing: border-box;
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem;
+  background-color: #ffc9b3;
+  border-radius: 2rem;
+}
+</style>

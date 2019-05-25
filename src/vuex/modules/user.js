@@ -64,7 +64,6 @@ export const actions = {
       })
   },
   logout({ commit, dispatch }) {
-    console.log('before commit sigOut')
     return firebaseService
       .signOut()
       .then(() => {
@@ -73,7 +72,6 @@ export const actions = {
           message: '로그dkdnt이 정상적으로 되었습니다.'
         }
         dispatch('notification/add', notification, { root: true })
-        console.log('after commit sigOut')
         commit('SET_USER', null)
         commit('SET_IS_AUTHENTICATED', false)
       })

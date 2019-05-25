@@ -9,15 +9,15 @@
     />
     <table class="table">
       <colgroup>
-        <col style="width: 7%" />
-        <col style="width:" />
-        <col style="width: 11%" />
-        <col style="width: 12%" />
-        <col style="width: 12%" />
-        <col style="width:" />
-        <col style="width: 9%" />
-        <col style="width: 9%" />
-        <col style="width: 5%" />
+        <col style="width: 7%">
+        <col style="width:">
+        <col style="width: 11%">
+        <col style="width: 12%">
+        <col style="width: 12%">
+        <col style="width:">
+        <col style="width: 9%">
+        <col style="width: 9%">
+        <col style="width: 5%">
       </colgroup>
       <thead>
         <tr>
@@ -42,7 +42,9 @@
           <td class="table_desc">{{ JMTZ.memo }}</td>
           <td class="table_desc">{{ JMTZ.like }}</td>
           <td class="table_desc">{{ checkIsOpen(JMTZ.isOpen) }}</td>
-          <td class="table_desc"><button class="btn_del">삭제</button></td>
+          <td class="table_desc">
+            <button class="btn_del">삭제</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -56,7 +58,7 @@ export default {
   data() {
     return {
       chartStyle: {
-        height: '400px',
+        height: '240px',
         margin: '2rem 0',
         position: 'relative'
       }

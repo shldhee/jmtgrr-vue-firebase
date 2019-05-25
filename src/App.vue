@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <app-nav />
-    <NotificationContainer />
+    <app-nav/>
+    <NotificationContainer/>
     <div class="main">
-      <router-view class="container" />
+      <router-view class="container"/>
     </div>
   </div>
 </template>
@@ -94,15 +94,18 @@ button {
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
+  display: flex;
   margin: 3rem auto;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form {
-  flex-grow: 1;
-  // width: 90%;
-  max-width: 640px;
-  // margin: 0 auto;
+  // flex-grow: 1;
+  // max-width: 640px;
+  box-sizing: border-box;
   padding: 0 3rem 3rem;
   display: flex;
   flex-direction: column;
@@ -118,8 +121,9 @@ button {
 
   label {
     font-size: 2.6rem;
-    color: #acacac;
-    letter-spacing: 4px;
+    // color: #000000;
+    // letter-spacing: 4px;
+    // color: #521800;
   }
 
   input,
@@ -133,10 +137,11 @@ button {
     font-size: 2rem;
     box-sizing: border-box;
     vertical-align: middle;
+    font-weight: bold;
     border-radius: 1rem;
-    color: #d3d9fe;
-    background-color: #58626e;
-    border: 1px solid #58626e;
+    color: #222222;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
     outline: none;
   }
   input::selected {
@@ -144,6 +149,7 @@ button {
   }
   input::placeholder {
     color: #d3d9fe;
+    font-weight: 400;
   }
 
   select {
@@ -163,5 +169,7 @@ button {
 
 .error {
   border: 1px solid orangered;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 </style>
