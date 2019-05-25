@@ -7,8 +7,17 @@ import 'nprogress/nprogress.css'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import Vuelidate from 'vuelidate'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import moment from 'moment'
+import VueMomentJS from 'vue-momentjs'
 
 Vue.use(Vuelidate)
+library.add(faCoffee)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.use(VueMomentJS, moment)
+
 Vue.config.productionTip = false
 
 // Initialize Firebase

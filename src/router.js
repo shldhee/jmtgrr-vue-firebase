@@ -21,12 +21,29 @@ const router = new Router({
       name: 'home',
       component: Home,
       children: [
-        // {
-        //   path: '/homeLogin',
-        //   name: 'homeLogin',
-        //   component: LoginUser
-        // }
+        {
+          path: '/jmtzall',
+          name: 'jmtzall',
+          component: JMTZAll
+          // props: true,
+          // beforeEnter(routeTo, routeFrom, next) {
+          //   store.dispatch('getAllJMTZs').then(getAllJMTZs => {
+          //     routeTo.params.getAllJMTZs = getAllJMTZs
+          //     next()
+          //   })
+          // }
+        }
       ]
+    },
+    {
+      path: '/join',
+      name: 'join',
+      component: JoinUser
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: LoginUser
     },
     {
       path: '/jmtzcreate',
@@ -51,28 +68,7 @@ const router = new Router({
         })
       }
     },
-    {
-      path: '/jmtzall',
-      name: 'jmtzall',
-      component: JMTZAll
-      // props: true,
-      // beforeEnter(routeTo, routeFrom, next) {
-      //   store.dispatch('getAllJMTZs').then(getAllJMTZs => {
-      //     routeTo.params.getAllJMTZs = getAllJMTZs
-      //     next()
-      //   })
-      // }
-    },
-    {
-      path: '/join',
-      name: 'join',
-      component: JoinUser
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: LoginUser
-    },
+
     {
       path: '/404',
       name: '404',

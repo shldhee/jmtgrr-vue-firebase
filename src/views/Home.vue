@@ -2,19 +2,18 @@
   <div class="home">
     <h1>JMTgram</h1>
     <p>존맛탱집을 가감없이 공유하는 서비스</p>
-    <LoginUser v-if="!loggedIn"></LoginUser>
-    <JMTZAll v-else></JMTZAll>
+    <login-user v-if="!loggedIn"></login-user>
+    <router-view />
   </div>
 </template>
 
 <script>
 import { authComputed } from '../vuex/helpers.js'
 import LoginUser from './LoginUser.vue'
-import JMTZAll from './JMTZAll.vue'
 import NProgress from 'nprogress'
 
 export default {
-  components: { LoginUser, JMTZAll },
+  components: { LoginUser },
   computed: {
     ...authComputed
   },

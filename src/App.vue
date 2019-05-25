@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <app-nav/>
-    <NotificationContainer/>
+    <app-nav />
+    <NotificationContainer />
     <div class="main">
-      <router-view class="container"/>
+      <router-view class="container" />
     </div>
   </div>
 </template>
@@ -89,7 +89,7 @@ button {
 
 .main {
   display: flex;
-  flex-grow: 1;
+  // flex-grow: 1;
   // background: linear-gradient(0deg, #e91e63, #d2517e 71.5%);
 }
 
@@ -160,6 +160,7 @@ button {
     background: #58626e
       url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iNiIgd2lkdGg9IjEwIj48cG9seWdvbiBwb2ludHM9IjAsMCAxMCwwIDUsNiIgc3R5bGU9ImZpbGw6cmdiYSgwLDAsMCwuMjQpOyIvPjwvc3ZnPg==)
       no-repeat right 12px center;
+    background-color: #ffffff;
   }
 }
 
@@ -171,5 +172,9 @@ button {
   border: 1px solid orangered;
   padding: 1rem;
   border-radius: 1rem;
+}
+
+.link_btn {
+  text-decoration: none;
 }
 </style>

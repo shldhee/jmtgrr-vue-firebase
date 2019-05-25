@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent="create">
+  <form class="form form_create" @submit.prevent="create">
     <BaseSelect
       label="category"
       title="종류"
@@ -58,9 +58,7 @@
       @blur="$v.JMTZObject.price.$touch()"
     />
     <template v-if="$v.JMTZObject.price.$error">
-      <p v-if="!$v.JMTZObject.price.numeric" class="message_err">
-        Only Number
-      </p>
+      <p v-if="!$v.JMTZObject.price.numeric" class="message_err">Only Number</p>
       <p v-if="!$v.JMTZObject.price.required" class="message_err">
         가격을 입력해주세요
       </p>
@@ -116,20 +114,13 @@
         type="checkbox"
         name="isOpen"
         id="isOpen"
-        value="true"
+        value="false"
       />
       <label for="isOpen">이 게시물을 공개/비공개 여부를 체크해주세요.</label>
     </div>
-    <template v-if="$v.JMTZObject.isOpen.$error">
-      <p v-if="!$v.JMTZObject.isOpen.required" class="message_err">
-        공개/비공개을 선택해주세요
-      </p>
-    </template>
 
     <BaseButton :disabled="$v.$anyError" type="submit">등록</BaseButton>
-    <p v-if="$v.$anyError" class="message_err">
-      필수 입력을 채워주세요
-    </p>
+    <p v-if="$v.$anyError" class="message_err">필수 입력을 채워주세요</p>
   </form>
 </template>
 
@@ -150,8 +141,7 @@ export default {
       menu: { required },
       price: { required, numeric },
       location: { required },
-      like: { required },
-      isOpen: { required }
+      like: { required }
     }
   },
   methods: {
@@ -175,7 +165,8 @@ export default {
         location: '',
         isOpen: '',
         memo: '',
-        like: ''
+        like: '',
+        date: this.$moment(new Date()).format('YYYYMMDD')
       }
     }
   }
@@ -183,18 +174,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form_create {
+  box-sizing: border-box;
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem;
+  background-color: #ffc9b3;
+  border-radius: 2rem;
+}
+
 input[type='checkbox'] {
   display: none;
 }
-input[type='checkbox'] + label::before {
-  // content: '\F0C8';
-  content: '\F0C8';
-}
-input[type='checkbox']:checked + label::before {
-  // content: '\F14A';
-  content: 'V';
-}
+
 input[type='checkbox'] + label::before {
   content: '';
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+  border-radius: 2px;
+  border: 1px solid #000;
+  display: inline-block;
+}
+input[type='checkbox']:checked + label::before {
+  content: '';
+  background: url('https://img.icons8.com/material-rounded/24/000000/checked-checkbox.png')
+    center no-repeat;
 }
 </style>

@@ -1,27 +1,18 @@
 <template>
   <header class="header">
     <nav class="nav">
-      <router-link to="/">
-        Home
-      </router-link>
-      <router-link to="/jmtzall">
+      <router-link to="/" v-if="!loggedIn">Home</router-link>
+      <router-link to="/jmtzall" v-else>Home</router-link>
+      <!-- <router-link to="/jmtzall">
         JMTZ 리스트(전체)
-      </router-link>
-      <template v-if="!loggedIn">
-        <router-link to="/join">
-          가입
-        </router-link>
-        <router-link to="/login">
-          로그인
-        </router-link>
-      </template>
-      <template v-else>
-        <router-link to="/jmtzcreate">
-          JMTZ 등록
-        </router-link>
-        <router-link to="/jmtzlist">
-          JMTZ 리스트(개인)
-        </router-link>
+      </router-link>-->
+      <!-- <template v-if="!loggedIn">
+        <router-link to="/join">가입</router-link>
+        <router-link to="/login">로그인</router-link>
+      </template>-->
+      <template v-if="loggedIn">
+        <router-link to="/jmtzcreate">등록</router-link>
+        <router-link to="/jmtzlist">마이페이지</router-link>
         <a href="#;" @click="logout">Logout</a>
       </template>
     </nav>
@@ -64,6 +55,7 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   // margin-bottom: 5rem;
+  justify-content: center;
 }
 
 a {

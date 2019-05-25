@@ -69,7 +69,7 @@ export const actions = {
       .then(() => {
         const notification = {
           type: 'success',
-          message: '로그dkdnt이 정상적으로 되었습니다.'
+          message: '로그아웃이 정상적으로 되었습니다.'
         }
         dispatch('notification/add', notification, { root: true })
         commit('SET_USER', null)

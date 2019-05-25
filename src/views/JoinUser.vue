@@ -1,5 +1,5 @@
 <template>
-  <form class="form" @submit.prevent="join">
+  <form class="form form_join" @submit.prevent="join">
     <h1>가입하기</h1>
     <BaseInput
       label="userEmail"
@@ -43,6 +43,10 @@
 
     <BaseButton :disabled="$v.$anyError" type="submit">Join</BaseButton>
     <p v-if="$v.$anyError" class="message_err">필수 입력 사항을 채워주세요</p>
+    <p>
+      이미 회원이시면
+      <router-link class="link_btn" to="login">로그인</router-link>을 해주세요
+    </p>
   </form>
 </template>
 
@@ -89,3 +93,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.form_join {
+  box-sizing: border-box;
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem;
+  background-color: #ffc9b3;
+  border-radius: 2rem;
+}
+</style>

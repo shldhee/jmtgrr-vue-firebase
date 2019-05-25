@@ -35,6 +35,10 @@
 
     <BaseButton :disabled="$v.$anyError" type="submit">Login</BaseButton>
     <p v-if="$v.$anyError" class="message_err">필수 입력 사항을 채워주세요</p>
+    <p>
+      회원이 아닌 경우는
+      <router-link class="link_btn" to="join">가입</router-link>을 해주세요
+    </p>
   </form>
 </template>
 
@@ -71,7 +75,7 @@ export default {
           })
           .then(() => {
             this.$store.dispatch('getAllJMTZs').then(() => {
-              this.$router.replace({ name: 'home' })
+              this.$router.replace({ name: 'jmtzall' })
             })
           })
           .catch(() => {
