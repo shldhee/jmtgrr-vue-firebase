@@ -9,15 +9,15 @@
     />
     <table class="table">
       <colgroup>
-        <col style="width: 7%">
-        <col style="width:">
-        <col style="width: 11%">
-        <col style="width: 12%">
-        <col style="width: 12%">
-        <col style="width:">
-        <col style="width: 9%">
-        <col style="width: 9%">
-        <col style="width: 5%">
+        <col style="width: 7%" />
+        <col style="width:" />
+        <col style="width: 11%" />
+        <col style="width: 12%" />
+        <col style="width: 12%" />
+        <col style="width:" />
+        <col style="width: 9%" />
+        <col style="width: 9%" />
+        <col style="width: 5%" />
       </colgroup>
       <thead>
         <tr>
@@ -33,7 +33,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="JMTZ in getJMTZs" :key="JMTZ.user">
+        <tr v-for="(JMTZ, index) in getJMTZsData" :key="JMTZ.user">
           <td class="table_desc">{{ JMTZ.category }}</td>
           <td class="table_desc">{{ JMTZ.name }}</td>
           <td class="table_desc">{{ JMTZ.menu }}</td>
@@ -43,7 +43,9 @@
           <td class="table_desc">{{ JMTZ.like }}</td>
           <td class="table_desc">{{ checkIsOpen(JMTZ.isOpen) }}</td>
           <td class="table_desc">
-            <button :data-id="JMTZ.id" @click="deleteJMTZ" class="btn_del">삭제</button>
+            <button @click="deleteJMTZ(index)" class="btn_del">
+              삭제
+            </button>
           </td>
         </tr>
       </tbody>
@@ -61,7 +63,8 @@ export default {
         height: '240px',
         margin: '2rem 0',
         position: 'relative'
-      }
+      },
+      getJMTZsData: this.getJMTZs
     }
   },
   components: {
@@ -133,8 +136,17 @@ export default {
     checkIsOpen(isOpen) {
       return isOpen ? '공개' : '비공개'
     },
-    deleteJMTZ(e) {
-      console.log(e.target.dataset.id)
+    deleteJMTZ(index) {
+      // const key = e.target.dataset.id
+      //
+      // const JMTZtoRemove = Array.from(
+      //   Object.keys(this.getJMTZs),
+      //   k => this.getJMTZs[k]
+      // ).filter(list => {
+      //   return list.id !== key
+      // })
+      this.$delete(this.getJMTZsData, index)
+      this.$store.dispatch('removeJMTZ', this.getJMTZsData)
     }
   }
 }

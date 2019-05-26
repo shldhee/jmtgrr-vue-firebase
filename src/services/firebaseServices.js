@@ -51,5 +51,12 @@ export default {
   },
   getAllJMTZ() {
     return firebase.database().ref('users/')
+  },
+  removeJMTZ({ rootState }, payload) {
+    return firebase
+      .database()
+      .ref('users')
+      .child(rootState.user.user.user.uid)
+      .set(payload)
   }
 }
