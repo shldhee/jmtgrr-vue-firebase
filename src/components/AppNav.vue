@@ -59,7 +59,7 @@ export default {
 }
 
 a {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   // font-weight: bold;
   color: #2e3131;
   margin: auto 1rem;

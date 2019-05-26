@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <app-nav />
-    <NotificationContainer />
+    <app-nav/>
+    <NotificationContainer/>
     <div class="main">
-      <router-view class="container" />
+      <router-view class="container"/>
     </div>
   </div>
 </template>
@@ -120,10 +120,7 @@ button {
   margin: 1rem 0;
 
   label {
-    font-size: 2.6rem;
-    // color: #000000;
-    // letter-spacing: 4px;
-    // color: #521800;
+    font-size: 1.8rem;
   }
 
   input,

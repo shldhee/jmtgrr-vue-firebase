@@ -24,14 +24,17 @@ const router = new Router({
         {
           path: '/jmtzall',
           name: 'jmtzall',
-          component: JMTZAll
-          // props: true,
-          // beforeEnter(routeTo, routeFrom, next) {
-          //   store.dispatch('getAllJMTZs').then(getAllJMTZs => {
-          //     routeTo.params.getAllJMTZs = getAllJMTZs
-          //     next()
-          //   })
-          // }
+          component: JMTZAll,
+          meta: {
+            authRequired: true
+          },
+          props: true,
+          beforeEnter(routeTo, routeFrom, next) {
+            store.dispatch('getAllJMTZs').then(getAllJMTZs => {
+              routeTo.params.getAllJMTZs = getAllJMTZs
+              next()
+            })
+          }
         }
       ]
     },
@@ -64,6 +67,7 @@ const router = new Router({
       beforeEnter(routeTo, routeFrom, next) {
         store.dispatch('getJMTZs').then(getJMTZs => {
           routeTo.params.getJMTZs = getJMTZs
+          console.log(getJMTZs, 'global router')
           next()
         })
       }

@@ -3,14 +3,14 @@
     <h1>존맛탱집 전체 리스트</h1>
     <table class="table">
       <colgroup>
-        <col style="width:">
-        <col style="width: 12%">
-        <col style="width:">
-        <col style="width: 12%">
-        <col style="width: 12%">
-        <col style="width: 12%">
-        <col style="width:">
-        <col style="width: 15%">
+        <col style="width:" />
+        <col style="width: 12%" />
+        <col style="width:" />
+        <col style="width: 12%" />
+        <col style="width: 12%" />
+        <col style="width: 12%" />
+        <col style="width:" />
+        <col style="width: 15%" />
       </colgroup>
       <thead>
         <tr>
@@ -42,18 +42,26 @@
 
 <script>
 export default {
-  data() {
-    return {
-      getAllJMTZsHome: this.$store.state.getAllJMTZs
+  // data() {
+  //   return {
+  //     getAllJMTZs: this.$store.state.getAllJMTZs
+  //   }
+  // },
+  props: {
+    getAllJMTZs: {
+      type: Object,
+      default: function() {
+        return {}
+      }
     }
   },
   components: {},
   computed: {
     allArray() {
       let allArr = []
-      for (var key in this.getAllJMTZsHome) {
-        for (var childKey in this.getAllJMTZsHome[key]) {
-          allArr.push(this.getAllJMTZsHome[key][childKey])
+      for (var key in this.getAllJMTZs) {
+        for (var childKey in this.getAllJMTZs[key]) {
+          allArr.push(this.getAllJMTZs[key][childKey])
         }
       }
       return allArr

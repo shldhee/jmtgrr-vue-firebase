@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import 'firebase/storage'
 
 export default {
   createUser(email, password) {
@@ -11,6 +12,7 @@ export default {
     return firebase.auth().signOut()
   },
   addJMTZ({ rootState }, payload) {
+    let imageUrl
     const myRef = firebase
       .database()
       .ref('users')
@@ -18,15 +20,31 @@ export default {
       .push()
 
     const key = myRef.key
-    const newPayload = {
-      ...payload,
-      id: key
-    }
+
+    const filename = payload.image.name
+    const ext = filename.slice(filename.lastIndexOf('.'))
+
     return firebase
-      .database()
-      .ref('users')
-      .child(rootState.user.user.user.uid + `/${key}`)
-      .set(newPayload)
+      .storage()
+      .ref('/users')
+      .child(rootState.user.user.user.uid + `/${key}.${ext}`)
+      .put(payload.image)
+      .then(snapshot => {
+        snapshot.ref.getDownloadURL().then(function(downloadURL) {
+          imageUrl = downloadURL
+          const newPayload = {
+            ...payload,
+            id: key,
+            imageUrl: imageUrl
+          }
+
+          return firebase
+            .database()
+            .ref('users')
+            .child(rootState.user.user.user.uid + `/${key}`)
+            .set(newPayload)
+        })
+      })
   },
   getJMTZ({ rootState }) {
     return firebase.database().ref('users/' + rootState.user.user.user.uid)

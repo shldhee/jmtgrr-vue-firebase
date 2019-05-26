@@ -104,11 +104,21 @@
       </p>
     </template>
 
-    <div
-      class="group"
-      :class="{ error: $v.JMTZObject.isOpen.$error }"
-      @blur="$v.JMTZObject.isOpen.$touch()"
-    >
+    <div class="group">
+      <button type="button" @click="onPickFile">업로드 이미지</button>
+      <input
+        id="uploadImg"
+        type="file"
+        style="display: none;"
+        ref="fileInput"
+        accept="image/*"
+        @change="onFilePicked"
+      />
+      <label for="uploadImg">이미지를 업로드 해주세요.</label>
+      <img :src="JMTZObject.imageUrl" width="100%" alt />
+    </div>
+
+    <div class="group">
       <input
         v-model="JMTZObject.isOpen"
         type="checkbox"
@@ -166,13 +176,32 @@ export default {
         isOpen: '',
         memo: '',
         like: '',
+        imageUrl: null,
+        image: null,
         date: this.$moment(new Date()).format('YYYYMMDD')
       }
+    },
+    onPickFile() {
+      this.$refs.fileInput.click()
+    },
+    onFilePicked(event) {
+      const files = event.target.files
+      let filename = files[0].name
+      console.log(filename)
+      if (filename.lastIndexOf('.') <= 0) {
+        return alert('Please add a valid file!')
+      }
+      const fileReader = new FileReader()
+      fileReader.addEventListener('load', () => {
+        this.JMTZObject.imageUrl = fileReader.result
+      })
+      fileReader.readAsDataURL(files[0])
+      this.JMTZObject.image = files[0]
+      // console.log(this.JMTZObject.image)
     }
   }
 }
 </script>
-
 <style lang="scss" scoped>
 .form_create {
   box-sizing: border-box;
@@ -189,6 +218,7 @@ input[type='checkbox'] {
 
 input[type='checkbox'] + label::before {
   content: '';
+  vertical-align: top;
   width: 18px;
   height: 18px;
   margin-right: 6px;

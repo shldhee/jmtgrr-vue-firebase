@@ -43,7 +43,7 @@
           <td class="table_desc">{{ JMTZ.like }}</td>
           <td class="table_desc">{{ checkIsOpen(JMTZ.isOpen) }}</td>
           <td class="table_desc">
-            <button class="btn_del">삭제</button>
+            <button :data-id="JMTZ.id" @click="deleteJMTZ" class="btn_del">삭제</button>
           </td>
         </tr>
       </tbody>
@@ -132,6 +132,9 @@ export default {
   methods: {
     checkIsOpen(isOpen) {
       return isOpen ? '공개' : '비공개'
+    },
+    deleteJMTZ(e) {
+      console.log(e.target.dataset.id)
     }
   }
 }

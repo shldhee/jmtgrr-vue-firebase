@@ -53,6 +53,7 @@ export default new Vuex.Store({
         .getJMTZ({ rootState })
         .once('value')
         .then(snapshot => {
+          console.log(snapshot)
           const notification = {
             type: 'success',
             message: '존맛탱집 리스트를 정상적으로 불러왔습니다.'
