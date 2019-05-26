@@ -43,7 +43,11 @@
           <td class="table_desc">{{ JMTZ.like }}</td>
           <td class="table_desc">{{ checkIsOpen(JMTZ.isOpen) }}</td>
           <td class="table_desc">
-            <button @click="deleteJMTZ(index)" class="btn_del">
+            <button
+              :data-id="JMTZ.id"
+              @click="deleteJMTZ(index)"
+              class="btn_del"
+            >
               삭제
             </button>
           </td>
@@ -137,16 +141,13 @@ export default {
       return isOpen ? '공개' : '비공개'
     },
     deleteJMTZ(index) {
-      // const key = e.target.dataset.id
-      //
-      // const JMTZtoRemove = Array.from(
-      //   Object.keys(this.getJMTZs),
-      //   k => this.getJMTZs[k]
-      // ).filter(list => {
-      //   return list.id !== key
-      // })
       this.$delete(this.getJMTZsData, index)
-      this.$store.dispatch('removeJMTZ', this.getJMTZsData)
+      console.log(this.getJMTZsData, index)
+      // this.$store.dispatch('removeJMTZ', this.getJMTZsData, index)
+      this.$store.dispatch('removeJMTZ', {
+        obj: this.getJMTZsData,
+        key: index
+      })
     }
   }
 }

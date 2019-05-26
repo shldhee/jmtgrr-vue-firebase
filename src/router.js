@@ -67,7 +67,6 @@ const router = new Router({
       beforeEnter(routeTo, routeFrom, next) {
         store.dispatch('getJMTZs').then(getJMTZs => {
           routeTo.params.getJMTZs = getJMTZs
-          console.log(getJMTZs, 'global router')
           next()
         })
       }

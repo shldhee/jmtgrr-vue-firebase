@@ -22,12 +22,12 @@ export default {
     const key = myRef.key
 
     const filename = payload.image.name
-    const ext = filename.slice(filename.lastIndexOf('.'))
+    // const ext = filename.slice(filename.lastIndexOf('.'))
 
     return firebase
       .storage()
       .ref('/users')
-      .child(rootState.user.user.user.uid + `/${key}.${ext}`)
+      .child(rootState.user.user.user.uid + `/${key}`)
       .put(payload.image)
       .then(snapshot => {
         snapshot.ref.getDownloadURL().then(function(downloadURL) {
@@ -52,11 +52,17 @@ export default {
   getAllJMTZ() {
     return firebase.database().ref('users/')
   },
-  removeJMTZ({ rootState }, payload) {
-    return firebase
-      .database()
-      .ref('users')
-      .child(rootState.user.user.user.uid)
-      .set(payload)
+  removeJMTZ({ rootState }, payload, key) {
+    return firebase.storage()
+      .ref('/users')
+      .child(rootState.user.user.user.uid + `/${key}`)
+      .delete()
+      .then(() => {
+        return firebase
+          .database()
+          .ref('users')
+          .child(rootState.user.user.user.uid)
+          .set(payload)
+      })
   }
 }
