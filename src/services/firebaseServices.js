@@ -21,13 +21,13 @@ export default {
 
     const key = myRef.key
 
-    const filename = payload.image.name
-    const ext = filename.slice(filename.lastIndexOf('.'))
+    // const filename = payload.image.name
+    // const ext = filename.slice(filename.lastIndexOf('.'))
 
     return firebase
       .storage()
       .ref('/users')
-      .child(rootState.user.user.user.uid + `/${key}.${ext}`)
+      .child(rootState.user.user.user.uid + `/${key}`)
       .put(payload.image)
       .then(snapshot => {
         snapshot.ref.getDownloadURL().then(function(downloadURL) {
@@ -65,5 +65,14 @@ export default {
           .child(rootState.user.user.user.uid)
           .set(payload)
       })
+  },
+  updateJMTZ({ rootState }, payload, key) {
+    return firebase
+      .database()
+      .ref('users')
+      .child(rootState.user.user.user.uid + `/${key}`)
+      .update(
+        payload[key]
+    )
   }
 }

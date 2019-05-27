@@ -28,6 +28,9 @@ export default new Vuex.Store({
     },
     REMOVE_JMTZ(state, obj) {
       state.getJMTZs = obj
+    },
+    UPDATE_JMTZ(state, obj) {
+      state.getJMTZs = obj
     }
   },
   actions: {
@@ -95,16 +98,37 @@ export default new Vuex.Store({
           dispatch('notification/add', notification, { root: true })
         })
     },
-    removeJMTZ({ rootState, commit, dispatch }, { obj, key }) {
+    removeJMTZ({ rootState, commit, dispatch }, { getJMTZ, key }) {
+      console.log(getJMTZ)
       return firebaseService
-        .removeJMTZ({ rootState }, obj, key)
+        .removeJMTZ({ rootState }, getJMTZ, key)
         .then(() => {
           const notification = {
             type: 'success',
             message: '정상적으로 리스트 삭제되었습니다.'
           }
           dispatch('notification/add', notification, { root: true })
-          commit('REMOVE_JMTZ', obj)
+          commit('REMOVE_JMTZ', getJMTZ)
+        })
+        .catch(error => {
+          const notification = {
+            type: 'error',
+            message: '오류가 발생했습니다. : ' + error.message
+          }
+          dispatch('notification/add', notification, { root: true })
+        })
+    },
+    updateJMTZ({ rootState, commit, dispatch }, { getJMTZ, key }) {
+      console.log(getJMTZ, key)
+      return firebaseService
+        .updateJMTZ({ rootState }, getJMTZ, key)
+        .then(() => {
+          const notification = {
+            type: 'success',
+            message: '정상적으로 공개여부가 변경되었습니다.'
+          }
+          dispatch('notification/add', notification, { root: true })
+          commit('UPDATE_JMTZ', getJMTZ)
         })
         .catch(error => {
           const notification = {

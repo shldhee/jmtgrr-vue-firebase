@@ -41,7 +41,7 @@
           <td class="table_desc">{{ JMTZ.location }}</td>
           <td class="table_desc">{{ JMTZ.memo }}</td>
           <td class="table_desc">{{ JMTZ.like }}</td>
-          <td class="table_desc" @click="toggleIsOpen">
+          <td class="table_desc" @click="toggleIsOpen(JMTZ.isOpen, index)">
             {{ checkIsOpen(JMTZ.isOpen) }}
           </td>
           <td class="table_desc">
@@ -142,11 +142,19 @@ export default {
     checkIsOpen(isOpen) {
       return isOpen ? '공개' : '비공개'
     },
-    deleteJMTZ(index) {
-      this.$delete(this.getJMTZsData, index)
+    deleteJMTZ(key) {
+      this.$delete(this.getJMTZsData, key)
       this.$store.dispatch('removeJMTZ', {
-        obj: this.getJMTZsData,
-        key: index
+        getJMTZ: this.getJMTZsData,
+        key: key
+      })
+    },
+    toggleIsOpen(isOpen, key) {
+      console.log(this.getJMTZsData)
+      this.getJMTZsData[key].isOpen = !isOpen
+      this.$store.dispatch('updateJMTZ', {
+        getJMTZ: this.getJMTZsData,
+        key: key
       })
     }
   }
