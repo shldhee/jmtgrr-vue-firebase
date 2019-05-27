@@ -13,6 +13,9 @@ import LoginUser from './LoginUser.vue'
 import NProgress from 'nprogress'
 
 export default {
+  mounted() {
+    console.log('created HOME')
+  },
   components: { LoginUser },
   computed: {
     ...authComputed

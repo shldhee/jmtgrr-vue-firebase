@@ -21,7 +21,7 @@ export default {
 
     const key = myRef.key
 
-    const filename = payload.image.name
+    // const filename = payload.image.name
     // const ext = filename.slice(filename.lastIndexOf('.'))
 
     return firebase
@@ -53,7 +53,8 @@ export default {
     return firebase.database().ref('users/')
   },
   removeJMTZ({ rootState }, payload, key) {
-    return firebase.storage()
+    return firebase
+      .storage()
       .ref('/users')
       .child(rootState.user.user.user.uid + `/${key}`)
       .delete()

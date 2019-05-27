@@ -22,6 +22,7 @@ export const mutations = {
 
 export const actions = {
   add({ commit }, notification) {
+    console.log('commit PUSH')
     commit('PUSH', notification)
   },
   remove({ commit }, notificationToRemove) {

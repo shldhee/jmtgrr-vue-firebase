@@ -48,6 +48,7 @@ export const actions = {
           type: 'success',
           message: '로그인이 정상적으로 되었습니다.'
         }
+        console.log('commit SERT_USER, SERISTS')
         dispatch('notification/add', notification, { root: true })
         commit('SET_USER', user)
         commit('SET_IS_AUTHENTICATED', true)

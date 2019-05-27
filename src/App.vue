@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <app-nav/>
-    <NotificationContainer/>
+    <app-nav />
+    <NotificationContainer />
     <div class="main">
-      <router-view class="container"/>
+      <router-view class="container" />
     </div>
   </div>
 </template>
@@ -127,13 +127,13 @@ button {
   select {
     display: block;
     text-align: left;
-    height: 6.2rem;
+    height: 4.2rem;
     width: 100%;
     margin-top: 0.8rem;
     padding: 0 1rem;
-    font-size: 2rem;
+    font-size: 1.6rem;
     box-sizing: border-box;
-    vertical-align: middle;
+    // vertical-align: middle;
     font-weight: bold;
     border-radius: 1rem;
     color: #222222;
@@ -145,8 +145,25 @@ button {
     background-color: #58626e;
   }
   input::placeholder {
-    color: #d3d9fe;
+    font-size: 1rem;
+    color: #b2b2b2;
     font-weight: 400;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 1.6rem;
+  }
+  input::-moz-placeholder {
+    font-size: 1.6rem;
+  }
+  input:-ms-input-placeholder {
+    font-size: 1.6rem;
+  }
+  input:-moz-placeholder {
+    font-size: 1.6rem;
+  }
+  input::placeholder {
+    font-size: 1.6rem;
   }
 
   select {

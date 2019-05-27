@@ -13,8 +13,12 @@
     />
 
     <template v-if="$v.email.$error">
-      <p v-if="!$v.email.email" class="message_err">유효한 이메일 주소를 입력해주세요</p>
-      <p v-if="!$v.email.required" class="message_err">이메일은 필수 입력 사항입니다</p>
+      <p v-if="!$v.email.email" class="message_err">
+        유효한 이메일 주소를 입력해주세요
+      </p>
+      <p v-if="!$v.email.required" class="message_err">
+        이메일은 필수 입력 사항입니다
+      </p>
     </template>
 
     <BaseInput
@@ -29,8 +33,12 @@
     />
 
     <template v-if="$v.password.$error">
-      <p v-if="!$v.password.minLength" class="message_err">비밀번호는 최소 6자 이상입니다</p>
-      <p v-if="!$v.password.required" class="message_err">비밀번호는 필수 입력 사항입니다</p>
+      <p v-if="!$v.password.minLength" class="message_err">
+        비밀번호는 최소 6자 이상입니다
+      </p>
+      <p v-if="!$v.password.required" class="message_err">
+        비밀번호는 필수 입력 사항입니다
+      </p>
     </template>
 
     <BaseButton :disabled="$v.$anyError" type="submit">Login</BaseButton>
@@ -75,6 +83,7 @@ export default {
           })
           .then(() => {
             this.$store.dispatch('getAllJMTZs').then(() => {
+              console.log('dispatch getAllJMtz')
               this.$router.replace({ name: 'jmtzall' })
             })
           })

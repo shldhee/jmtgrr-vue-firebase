@@ -1,52 +1,18 @@
 <template>
   <div class="list">
-    <h1>존맛탱집 전체 리스트</h1>
-    <table class="table">
-      <colgroup>
-        <col style="width:" />
-        <col style="width: 12%" />
-        <col style="width:" />
-        <col style="width: 12%" />
-        <col style="width: 12%" />
-        <col style="width: 12%" />
-        <col style="width:" />
-        <col style="width: 15%" />
-      </colgroup>
-      <thead>
-        <tr>
-          <th class="table_title">작성자</th>
-          <th class="table_title">종류</th>
-          <th class="table_title">가게</th>
-          <th class="table_title">메뉴</th>
-          <th class="table_title">가격</th>
-          <th class="table_title">위치</th>
-          <th class="table_title">메모</th>
-          <th class="table_title">추천/비추천</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="JMTZ in allArray" :key="JMTZ.user">
-          <td class="table_desc">{{ sliceEmail(JMTZ.email) }}</td>
-          <td class="table_desc">{{ JMTZ.category }}</td>
-          <td class="table_desc">{{ JMTZ.name }}</td>
-          <td class="table_desc">{{ JMTZ.menu }}</td>
-          <td class="table_desc">{{ JMTZ.price }}</td>
-          <td class="table_desc">{{ JMTZ.location }}</td>
-          <td class="table_desc">{{ JMTZ.memo }}</td>
-          <td class="table_desc">{{ JMTZ.like }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <JMTZ :allJmtz="allArray" />
   </div>
 </template>
 
 <script>
+import JMTZ from './JMTZ.vue'
 export default {
-  // data() {
-  //   return {
-  //     getAllJMTZs: this.$store.state.getAllJMTZs
-  //   }
-  // },
+  mounted() {
+    console.log('created All')
+  },
+  components: {
+    JMTZ
+  },
   props: {
     getAllJMTZs: {
       type: Object,
@@ -55,13 +21,14 @@ export default {
       }
     }
   },
-  components: {},
   computed: {
     allArray() {
       let allArr = []
       for (var key in this.getAllJMTZs) {
         for (var childKey in this.getAllJMTZs[key]) {
-          allArr.push(this.getAllJMTZs[key][childKey])
+          if (this.getAllJMTZs[key][childKey].isOpen) {
+            allArr.push(this.getAllJMTZs[key][childKey])
+          }
         }
       }
       return allArr
@@ -74,7 +41,7 @@ export default {
         email
           .slice(2)
           .split('')
-          .map(_ => '*')
+          .map(() => '*')
           .join('')
       return newEmail
     }

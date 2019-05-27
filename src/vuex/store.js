@@ -82,6 +82,7 @@ export default new Vuex.Store({
             message: '존맛탱집 전체 리스트를 정상적으로 불러왔습니다.'
           }
           dispatch('notification/add', notification, { root: true })
+          console.log('commit getalljtmzs')
           commit('GET_ALL_JMTZS', snapshot.val())
           return snapshot.val()
         })
@@ -94,21 +95,23 @@ export default new Vuex.Store({
         })
     },
     removeJMTZ({ rootState, commit, dispatch }, { obj, key }) {
-      return firebaseService.removeJMTZ({ rootState }, obj, key).then(() => {
-        const notification = {
-          type: 'success',
-          message: '정상적으로 리스트 삭제되었습니다.'
-        }
-        dispatch('notification/add', notification, { root: true })
-        commit('REMOVE_JMTZ', obj)
-      })
-      .catch(error => {
-        const notification = {
-          type: 'error',
-          message: '오류가 발생했습니다. : ' + error.message
-        }
-        dispatch('notification/add', notification, { root: true })
-      })
+      return firebaseService
+        .removeJMTZ({ rootState }, obj, key)
+        .then(() => {
+          const notification = {
+            type: 'success',
+            message: '정상적으로 리스트 삭제되었습니다.'
+          }
+          dispatch('notification/add', notification, { root: true })
+          commit('REMOVE_JMTZ', obj)
+        })
+        .catch(error => {
+          const notification = {
+            type: 'error',
+            message: '오류가 발생했습니다. : ' + error.message
+          }
+          dispatch('notification/add', notification, { root: true })
+        })
     }
   },
   getters: {}

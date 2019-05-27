@@ -12,11 +12,15 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import moment from 'moment'
 import VueMomentJS from 'vue-momentjs'
+import imagePreloader from 'vue-image-preloader'
+import VueLazyload from 'vue-lazyload'
 
 Vue.use(Vuelidate)
 library.add(faCoffee)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueMomentJS, moment)
+Vue.use(imagePreloader)
+Vue.use(VueLazyload)
 
 Vue.config.productionTip = false
 

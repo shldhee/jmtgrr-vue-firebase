@@ -104,8 +104,10 @@
       </p>
     </template>
 
-    <div class="group">
-      <button type="button" @click="onPickFile">업로드 이미지</button>
+    <div class="group group_upload">
+      <button class="btn_upload" type="button" @click="onPickFile">
+        업로드 이미지
+      </button>
       <input
         id="uploadImg"
         type="file"
@@ -114,11 +116,11 @@
         accept="image/*"
         @change="onFilePicked"
       />
-      <label for="uploadImg">이미지를 업로드 해주세요.</label>
+      <!-- <label for="uploadImg">이미지를 업로드 해주세요.</label> -->
       <img :src="JMTZObject.imageUrl" width="100%" alt />
     </div>
 
-    <div class="group">
+    <div class="group group_isOpen">
       <input
         v-model="JMTZObject.isOpen"
         type="checkbox"
@@ -126,7 +128,7 @@
         id="isOpen"
         value="false"
       />
-      <label for="isOpen">이 게시물을 공개/비공개 여부를 체크해주세요.</label>
+      <label for="isOpen">체크하면 공개/체크안하면 비공개입니다.</label>
     </div>
 
     <BaseButton :disabled="$v.$anyError" type="submit">등록</BaseButton>
@@ -187,7 +189,6 @@ export default {
     onFilePicked(event) {
       const files = event.target.files
       let filename = files[0].name
-      console.log(filename)
       if (filename.lastIndexOf('.') <= 0) {
         return alert('Please add a valid file!')
       }
@@ -197,7 +198,6 @@ export default {
       })
       fileReader.readAsDataURL(files[0])
       this.JMTZObject.image = files[0]
-      // console.log(this.JMTZObject.image)
     }
   }
 }
@@ -230,5 +230,25 @@ input[type='checkbox']:checked + label::before {
   content: '';
   background: url('https://img.icons8.com/material-rounded/24/000000/checked-checkbox.png')
     center no-repeat;
+}
+
+.group {
+  &_upload {
+    align-items: center;
+  }
+  &_isOpen {
+    label {
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.btn_upload {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.6rem;
+  width: 40%;
+  min-width: 160px;
 }
 </style>

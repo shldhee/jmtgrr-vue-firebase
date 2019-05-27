@@ -142,7 +142,7 @@ export default {
     },
     deleteJMTZ(index) {
       this.$delete(this.getJMTZsData, index)
-      console.log(this.getJMTZsData, index)
+      // console.log(this.getJMTZsData, index)
       // this.$store.dispatch('removeJMTZ', this.getJMTZsData, index)
       this.$store.dispatch('removeJMTZ', {
         obj: this.getJMTZsData,
