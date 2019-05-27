@@ -68,9 +68,8 @@ const router = new Router({
         store
           .dispatch('getJMTZs')
           .then(getJMTZs => {
-            console.log('router dispatch getJMTZs')
+            console.log('4.router dispatch getJMTZs', getJMTZs)
             routeTo.params.getJMTZs = getJMTZs
-            console.log(getJMTZs)
             next()
           })
           .catch(err => {

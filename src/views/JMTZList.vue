@@ -1,7 +1,6 @@
 <template>
   <div class="list">
     <h1>존맛탱집 리스트</h1>
-    {{ getJMTZs }}
     <ChartDonut
       v-if="checkgetJMTZs"
       :chartData="dataChart"
@@ -42,7 +41,9 @@
           <td class="table_desc">{{ JMTZ.location }}</td>
           <td class="table_desc">{{ JMTZ.memo }}</td>
           <td class="table_desc">{{ JMTZ.like }}</td>
-          <td class="table_desc">{{ checkIsOpen(JMTZ.isOpen) }}</td>
+          <td class="table_desc" @click="toggleIsOpen">
+            {{ checkIsOpen(JMTZ.isOpen) }}
+          </td>
           <td class="table_desc">
             <button
               :data-id="JMTZ.id"

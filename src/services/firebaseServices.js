@@ -21,13 +21,13 @@ export default {
 
     const key = myRef.key
 
-    // const filename = payload.image.name
-    // const ext = filename.slice(filename.lastIndexOf('.'))
+    const filename = payload.image.name
+    const ext = filename.slice(filename.lastIndexOf('.'))
 
     return firebase
       .storage()
       .ref('/users')
-      .child(rootState.user.user.user.uid + `/${key}`)
+      .child(rootState.user.user.user.uid + `/${key}.${ext}`)
       .put(payload.image)
       .then(snapshot => {
         snapshot.ref.getDownloadURL().then(function(downloadURL) {

@@ -161,6 +161,7 @@ export default {
       this.$v.$touch()
       if (!this.$v.$invalid) {
         this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
+          console.log('1.Create')
           this.$router.push({ name: 'jmtzlist' })
           this.JMTZObject = this.createFreshJMTZObject()
         })
