@@ -65,10 +65,17 @@ const router = new Router({
         authRequired: true
       },
       beforeEnter(routeTo, routeFrom, next) {
-        store.dispatch('getJMTZs').then(getJMTZs => {
-          routeTo.params.getJMTZs = getJMTZs
-          next()
-        })
+        store
+          .dispatch('getJMTZs')
+          .then(getJMTZs => {
+            console.log('router dispatch getJMTZs')
+            routeTo.params.getJMTZs = getJMTZs
+            console.log(getJMTZs)
+            next()
+          })
+          .catch(err => {
+            console.log(err)
+          })
       }
     },
 

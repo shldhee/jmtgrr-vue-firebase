@@ -36,11 +36,11 @@ export default new Vuex.Store({
         .addJMTZ({ rootState }, payload)
         .then(() => {
           commit('SET_JMTZ', payload)
-          const notification = {
-            type: 'success',
-            message: '존맛탱집이 생성되었습니다.'
-          }
-          dispatch('notification/add', notification, { root: true })
+          // const notification = {
+          //   type: 'success',
+          //   message: '존맛탱집이 생성되었습니다.'
+          // }
+          // dispatch('notification/add', notification, { root: true })
         })
         .catch(error => {
           const notification = {
@@ -56,11 +56,12 @@ export default new Vuex.Store({
         .getJMTZ({ rootState })
         .once('value')
         .then(snapshot => {
-          const notification = {
-            type: 'success',
-            message: '존맛탱집 리스트를 정상적으로 불러왔습니다.'
-          }
-          dispatch('notification/add', notification, { root: true })
+          console.log(snapshot.val())
+          // const notification = {
+          //   type: 'success',
+          //   message: '존맛탱집 리스트를 정상적으로 불러왔습니다.'
+          // }
+          // dispatch('notification/add', notification, { root: true })
           commit('GET_JMTZS', snapshot.val())
           return snapshot.val()
         })

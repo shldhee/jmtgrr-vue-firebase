@@ -1,6 +1,7 @@
 <template>
   <div class="list">
     <h1>존맛탱집 리스트</h1>
+    {{ getJMTZs }}
     <ChartDonut
       v-if="checkgetJMTZs"
       :chartData="dataChart"
@@ -142,8 +143,6 @@ export default {
     },
     deleteJMTZ(index) {
       this.$delete(this.getJMTZsData, index)
-      // console.log(this.getJMTZsData, index)
-      // this.$store.dispatch('removeJMTZ', this.getJMTZsData, index)
       this.$store.dispatch('removeJMTZ', {
         obj: this.getJMTZsData,
         key: index
