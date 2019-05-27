@@ -82,10 +82,7 @@ export default {
             password: this.password
           })
           .then(() => {
-            this.$store.dispatch('getAllJMTZs').then(() => {
-              console.log('dispatch getAllJMtz')
-              this.$router.replace({ name: 'jmtzall' })
-            })
+            this.$router.replace({ name: 'jmtzall' })
           })
           .catch(() => {
             NProgress.done()
