@@ -7,9 +7,6 @@
 <script>
 import JMTZ from './JMTZ.vue'
 export default {
-  mounted() {
-    console.log('created All')
-  },
   components: {
     JMTZ
   },

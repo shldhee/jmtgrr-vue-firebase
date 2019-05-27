@@ -31,7 +31,6 @@ const router = new Router({
           props: true,
           beforeEnter(routeTo, routeFrom, next) {
             store.dispatch('getAllJMTZs').then(getAllJMTZs => {
-              console.log('call alllll')
               routeTo.params.getAllJMTZs = getAllJMTZs
               next()
             })

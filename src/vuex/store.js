@@ -82,7 +82,6 @@ export default new Vuex.Store({
             message: '존맛탱집 전체 리스트를 정상적으로 불러왔습니다.'
           }
           dispatch('notification/add', notification, { root: true })
-          console.log('commit getalljtmzs')
           commit('GET_ALL_JMTZS', snapshot.val())
           return snapshot.val()
         })
