@@ -1,15 +1,41 @@
 {
-    "hosting": {
-      "site": "jmtgrr",
-      "public": "dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [{
-        "source": "**",
-        "destination": "/index.html"
-      }]
-    }
+  "hosting": {
+    "site": "jmtgrr",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [{
+      "source": "**",
+      "destination": "/index.html"
+    }],
+    "redirects": [{
+      "source": "**",
+      "destination": "/404",
+      "type": 404
+    }],
+    "headers": [ {
+      "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+      "headers" : [ {
+        "key" : "Access-Control-Allow-Origin",
+        "value" : "*"
+      } ]
+      }, {
+      "source" : "**/*.@(jpg|jpeg|gif|png)",
+      "headers" : [ {
+        "key" : "Cache-Control",
+        "value" : "max-age=7200"
+      } ]
+      }, {
+      "source" : "/404",
+      "headers" : [ {
+        "key" : "Cache-Control",
+        "value" : "max-age=300"
+      } ]
+    } ],
+    "cleanUrls": true,
+    "trailingSlash": false
   }
+}

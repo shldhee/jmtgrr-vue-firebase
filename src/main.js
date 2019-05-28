@@ -9,6 +9,11 @@ import camelCase from 'lodash/camelCase'
 import Vuelidate from 'vuelidate'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faBolt } from '@fortawesome/free-solid-svg-icons'
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram
+} from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import moment from 'moment'
 import VueMomentJS from 'vue-momentjs'
@@ -16,7 +21,7 @@ import imagePreloader from 'vue-image-preloader'
 import VueLazyload from 'vue-lazyload'
 
 Vue.use(Vuelidate)
-library.add(faCoffee, faBolt)
+library.add(faCoffee, faBolt, faFacebook, faTwitter, faInstagram)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueMomentJS, moment)
 Vue.use(imagePreloader)

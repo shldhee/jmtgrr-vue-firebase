@@ -5,6 +5,17 @@
     <div class="main">
       <router-view class="container" />
     </div>
+    <div class="fixed">
+      <ul class="fixed_list">
+        <!-- <li class="fixed_item">JMTgram</li> -->
+        <li class="fixed_item fixed_item-sns">
+          <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'twitter' }" />
+          <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }" />
+          <font-awesome-icon :icon="{ prefix: 'fab', iconName: 'instagram' }" />
+        </li>
+        <li class="fixed_item">© 2019 JMTgram</li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -105,10 +116,6 @@ button {
 }
 
 .form {
-  // flex-grow: 1;
-  // max-width: 640px;
-  // box-sizing: border-box;
-  // padding: 0 3rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -219,6 +226,28 @@ button {
     // text-decoration: none;
     font-weight: bold;
     color: #0ed3d9;
+  }
+}
+
+.fixed {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  &_list {
+    margin: 0;
+  }
+
+  &_item {
+    margin: 4px 0;
+    list-style: none;
+    font-sinze: 1.2rem;
+    color: #57cdd1;
+
+    &-sns {
+      font-size: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 </style>
