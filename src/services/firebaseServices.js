@@ -6,7 +6,12 @@ export default {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
   },
   signIn(email, password) {
-    return firebase.auth().signInWithEmailAndPassword(email, password)
+    return firebase
+      .auth()
+      .setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .then(function() {
+        return firebase.auth().signInWithEmailAndPassword(email, password)
+      })
   },
   signOut() {
     return firebase.auth().signOut()
@@ -71,8 +76,6 @@ export default {
       .database()
       .ref('users')
       .child(rootState.user.user.user.uid + `/${key}`)
-      .update(
-        payload[key]
-    )
+      .update(payload[key])
   }
 }
