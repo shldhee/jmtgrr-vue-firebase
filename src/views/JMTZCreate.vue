@@ -181,7 +181,7 @@ export default {
         like: '',
         imageUrl: null,
         image: null,
-        date: this.$moment(new Date()).format('YYYYMMDD')
+        date: this.$moment(new Date()).format('YYYYMMDDSS')
       }
     },
     onPickFile() {

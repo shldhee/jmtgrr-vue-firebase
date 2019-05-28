@@ -25,6 +25,7 @@ export default {
         for (var childKey in this.getAllJMTZs[key]) {
           if (this.getAllJMTZs[key][childKey].isOpen) {
             allArr.push(this.getAllJMTZs[key][childKey])
+            console.log(allArr)
           }
         }
       }
