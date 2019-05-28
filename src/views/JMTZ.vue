@@ -3,7 +3,7 @@
     <div class="list" v-for="list in allList" :key="list.id">
       <div class="list_header">
         <span>{{ list.email }}</span>
-        <span>{{ list.date }}</span>
+        <span>{{ convertDate(list.date) }}</span>
       </div>
 
       <div
@@ -43,6 +43,11 @@ export default {
   data() {
     return {
       allList: this.allJmtz
+    }
+  },
+  methods: {
+    convertDate(date) {
+      return date.slice(0, 8)
     }
   }
 }
