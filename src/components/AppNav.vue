@@ -1,5 +1,15 @@
 <template>
   <header class="header">
+    <h1 class="header_logo-wrap">
+      <router-link to="/" v-if="!loggedIn">
+        <font-awesome-icon class="header_logo" icon="bolt" />
+        JMTGram
+      </router-link>
+      <router-link to="/jmtzall" v-else
+        ><font-awesome-icon class="header_logo" icon="bolt" />
+        JMTGram</router-link
+      >
+    </h1>
     <nav class="nav">
       <router-link to="/" v-if="!loggedIn">Home</router-link>
       <router-link to="/jmtzall" v-else>Home</router-link>
@@ -43,8 +53,42 @@ export default {
 
 <style lang="scss" scoped>
 .header {
+  position: relative;
+  // flex-direction: row;
+  // align-items: center;
+  padding: 0 2rem;
   // background: linear-gradient(to right, #d2527f, #d91e18);
-  background-color: #f3664e;
+  // background-color: #f3664e;
+  border-bottom: 1px solid #0ed3d9;
+  &_logo-wrap {
+    > a {
+      color: #0ed3d9;
+      border: none;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    > a:hover {
+      color: #0ed3d9;
+      border: none;
+    }
+
+    > a:hover > .header_logo {
+      color: #0ed3d9;
+    }
+
+    color: #0ed3d9;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  &_logo {
+    margin-right: 10px;
+    color: #0ed3d9;
+    font-size: 2rem;
+    transition: all 1s;
+  }
 }
 
 .nav {
@@ -59,7 +103,7 @@ export default {
 }
 
 a {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   // font-weight: bold;
   color: #2e3131;
   margin: auto 1rem;
@@ -69,19 +113,19 @@ a {
   transition: all 1s;
 
   &:hover {
-    color: white;
-    border-bottom: 2px solid #fff;
+    color: #0ed3d9;
+    border-bottom: 2px solid #0ed3d9;
   }
 
   &:active {
-    color: white;
-    border-bottom: 2px solid #fff;
+    color: #0ed3d9;
+    border-bottom: 2px solid #0ed3d9;
   }
 }
 
 .router-link-exact-active {
-  color: white;
-  border-bottom: 2px solid #fff;
+  color: #0ed3d9;
+  border-bottom: 2px solid #0ed3d9;
 }
 
 .logoutButton {

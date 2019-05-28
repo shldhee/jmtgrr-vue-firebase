@@ -1,6 +1,6 @@
 <template>
   <form class="form form_login" @submit.prevent="login">
-    <h1>로그인</h1>
+    <h1 class="form_title">로그인</h1>
     <BaseInput
       label="userEmail"
       title="email"
@@ -43,10 +43,12 @@
 
     <BaseButton :disabled="$v.$anyError" type="submit">Login</BaseButton>
     <p v-if="$v.$anyError" class="message_err">필수 입력 사항을 채워주세요</p>
-    <p>
-      회원이 아닌 경우는
-      <router-link class="link_btn" to="join">가입</router-link>을 해주세요
-    </p>
+    <div class="link">
+      <p class="link_text">
+        회원이 아닌 경우는
+        <router-link class="link_btn" to="join">가입</router-link>을 해주세요
+      </p>
+    </div>
   </form>
 </template>
 
@@ -93,13 +95,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.form_login {
-  box-sizing: border-box;
-  max-width: 480px;
-  width: 100%;
-  padding: 3rem;
-  background-color: #ffc9b3;
-  border-radius: 2rem;
-}
-</style>
+<style scoped></style>

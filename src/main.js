@@ -8,7 +8,7 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 import Vuelidate from 'vuelidate'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faBolt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import moment from 'moment'
 import VueMomentJS from 'vue-momentjs'
@@ -16,7 +16,7 @@ import imagePreloader from 'vue-image-preloader'
 import VueLazyload from 'vue-lazyload'
 
 Vue.use(Vuelidate)
-library.add(faCoffee)
+library.add(faCoffee, faBolt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(VueMomentJS, moment)
 Vue.use(imagePreloader)

@@ -1,13 +1,26 @@
 <template>
   <div class>
-    <label v-if="label" :for="label">{{ title }}</label>
-    <input :value="value" :id="label" v-bind="$attrs" v-on="listeners" />
+    <label :class="{ fontSmall: fontSmall }" v-if="label" :for="label">{{
+      title
+    }}</label>
+    <input
+      :value="value"
+      :id="label"
+      v-bind="$attrs"
+      v-on="listeners"
+      @focus="fontSmall = true"
+    />
   </div>
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
+  data: function() {
+    return {
+      fontSmall: false
+    }
+  },
   props: {
     value: [String, Number, Boolean],
     title: {

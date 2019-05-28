@@ -1,9 +1,12 @@
 <template>
   <div class>
-    <label v-if="label" :for="label">{{ title }}</label>
+    <label :class="{ fontSmall: fontSmall }" v-if="label" :for="label">{{
+      title
+    }}</label>
     <select
       :value="value"
       @change="updateValue"
+      @focus="fontSmall = true"
       v-bind="$attrs"
       v-on="listeners"
     >
@@ -20,6 +23,11 @@
 <script>
 export default {
   inheritAttrs: false,
+  data: function() {
+    return {
+      fontSmall: false
+    }
+  },
   props: {
     categories: {
       type: Array,

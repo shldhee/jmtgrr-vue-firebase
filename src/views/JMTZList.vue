@@ -1,6 +1,6 @@
 <template>
   <div class="list">
-    <h1>존맛탱집 리스트</h1>
+    <h1 class="list_title">존맛탱집 리스트</h1>
     <ChartDonut
       v-if="checkgetJMTZs"
       :chartData="dataChart"
@@ -40,9 +40,13 @@
           <td class="table_desc">{{ JMTZ.price }}</td>
           <td class="table_desc">{{ JMTZ.location }}</td>
           <td class="table_desc">{{ JMTZ.memo }}</td>
-          <td class="table_desc">{{ JMTZ.like }}</td>
+          <td class="table_desc">
+            {{ JMTZ.like }}
+          </td>
           <td class="table_desc" @click="toggleIsOpen(JMTZ.isOpen, index)">
-            {{ checkIsOpen(JMTZ.isOpen) }}
+            <button type="button" class="btn_isOpen">
+              {{ checkIsOpen(JMTZ.isOpen) }}
+            </button>
           </td>
           <td class="table_desc">
             <button
@@ -162,9 +166,18 @@ export default {
 </script>
 <style lang="scss" scoped>
 .list {
+  &_title {
+    text-align: center;
+    width: 40%;
+    min-width: 360px;
+    font-size: 2rem;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0ed3d9;
+  }
   box-sizing: border-box;
   width: 100%;
-  padding: 0rem 1rem 3rem;
+  padding: 3rem 1rem 3rem;
   text-align: center;
 }
 .table {
@@ -197,7 +210,8 @@ export default {
   background: black;
 }
 
-.btn_del {
+.btn_del,
+.btn_isOpen {
   margin: 0;
   padding: 0.5rem 1rem;
   min-width: 6rem;

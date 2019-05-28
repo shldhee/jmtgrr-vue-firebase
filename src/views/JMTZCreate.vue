@@ -1,5 +1,6 @@
 <template>
   <form class="form form_create" @submit.prevent="create">
+    <h1 class="form_title">JMT 게시물 등록</h1>
     <BaseSelect
       label="category"
       title="종류"
@@ -126,7 +127,6 @@
         type="checkbox"
         name="isOpen"
         id="isOpen"
-        value="false"
       />
       <label for="isOpen">체크하면 공개/체크안하면 비공개입니다.</label>
     </div>
@@ -176,7 +176,7 @@ export default {
         menu: '',
         price: '',
         location: '',
-        isOpen: '',
+        isOpen: true,
         memo: '',
         like: '',
         imageUrl: null,
@@ -205,12 +205,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .form_create {
-  box-sizing: border-box;
-  max-width: 480px;
-  width: 100%;
-  padding: 3rem;
-  background-color: #ffc9b3;
-  border-radius: 2rem;
 }
 
 input[type='checkbox'] {
@@ -248,8 +242,8 @@ input[type='checkbox']:checked + label::before {
 .btn_upload {
   margin-top: 0;
   margin-bottom: 20px;
-  font-size: 1.6rem;
-  width: 40%;
-  min-width: 160px;
+  font-size: 1.2rem;
+  width: 30%;
+  min-width: 140px;
 }
 </style>

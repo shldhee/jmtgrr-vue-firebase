@@ -51,25 +51,26 @@ h6 {
 button {
   outline: none;
   cursor: pointer;
-  padding: 1rem 2rem;
-  font-size: 2rem;
+  padding: 1rem;
+  font-size: 1.4rem;
   color: #ffffff;
-  background-color: #f3664e;
+  background-color: #0ed3d9;
   border: none;
   border-radius: 0.4rem;
-  box-shadow: 0 0.4rem 0 0 #de5440;
+  box-shadow: 0 0.4rem 0 0 #00b2b7;
   min-width: 12rem;
   margin-top: 2rem;
   transition: all 1s;
 
   &:hover {
-    background-color: #fb8368;
-    box-shadow: 0 0.4rem 0 0 #f1735c;
+    background-color: #04cfd6;
+    box-shadow: 0 0.4rem 0 0 #008287;
+    transform: translateY(-2px);
   }
 
   &:active {
-    background-color: #df5c48;
-    box-shadow: 0 0.4rem 0 0 #d3523e;
+    background-color: #04cfd6;
+    box-shadow: 0 0.4rem 0 0 #008287;
   }
 
   &:disabled,
@@ -78,6 +79,7 @@ button {
     background-color: #cccccc;
     color: #666666;
     box-shadow: 0 0.4rem 0 0 #777777;
+    transform: translateY(0px);
   }
 }
 
@@ -105,11 +107,25 @@ button {
 .form {
   // flex-grow: 1;
   // max-width: 640px;
-  box-sizing: border-box;
-  padding: 0 3rem 3rem;
+  // box-sizing: border-box;
+  // padding: 0 3rem 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  max-width: 480px;
+  width: 100%;
+  padding: 3rem;
+  border-radius: 2rem;
+
+  &_title {
+    text-align: center;
+    width: 100%;
+    font-size: 2rem;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #0ed3d9;
+  }
 }
 
 .group {
@@ -121,6 +137,11 @@ button {
 
   label {
     font-size: 1.8rem;
+    transition: all 1s;
+  }
+
+  label.fontSmall {
+    font-size: 1.4rem;
   }
 
   input,
@@ -138,7 +159,7 @@ button {
     border-radius: 1rem;
     color: #222222;
     background-color: #ffffff;
-    border: 1px solid #ffffff;
+    border: 1px solid #cccccc;
     outline: none;
   }
   input::selected {
@@ -151,19 +172,19 @@ button {
   }
 
   input::-webkit-input-placeholder {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   input::-moz-placeholder {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   input:-ms-input-placeholder {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   input:-moz-placeholder {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
   input::placeholder {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
   }
 
   select {
@@ -188,7 +209,16 @@ button {
   border-radius: 1rem;
 }
 
-.link_btn {
-  text-decoration: none;
+.link {
+  margin: 10px 0;
+  &_text {
+    font-size: 1.2rem;
+  }
+
+  &_btn {
+    // text-decoration: none;
+    font-weight: bold;
+    color: #0ed3d9;
+  }
 }
 </style>

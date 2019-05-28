@@ -20,6 +20,7 @@ const router = new Router({
       path: '/',
       name: 'home',
       component: Home,
+      // redirect: 'jmtzall',
       children: [
         {
           path: '/jmtzall',
