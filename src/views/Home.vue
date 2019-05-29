@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <h1>JMTgram</h1>
-    <h2>{{ $moment(new Date()).format('YYYYMMDDSS') }}</h2>
     <p>존맛탱집을 공유하는 서비스</p>
     <login-user v-if="!loggedIn"></login-user>
     <router-view />

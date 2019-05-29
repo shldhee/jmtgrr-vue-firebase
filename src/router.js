@@ -69,7 +69,6 @@ const router = new Router({
         store
           .dispatch('getJMTZs')
           .then(getJMTZs => {
-            console.log('4.router dispatch getJMTZs', getJMTZs)
             routeTo.params.getJMTZs = getJMTZs
             next()
           })
@@ -78,7 +77,6 @@ const router = new Router({
           })
       }
     },
-
     {
       path: '/404',
       name: '404',

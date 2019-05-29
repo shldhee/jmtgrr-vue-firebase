@@ -26,29 +26,28 @@ export default {
 
     const key = myRef.key
 
-    // const filename = payload.image.name
-    // const ext = filename.slice(filename.lastIndexOf('.'))
-
     return firebase
       .storage()
       .ref('/users')
       .child(rootState.user.user.user.uid + `/${key}`)
       .put(payload.image)
       .then(snapshot => {
-        snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          imageUrl = downloadURL
-          const newPayload = {
-            ...payload,
-            id: key,
-            imageUrl: imageUrl
-          }
+        return snapshot.ref.getDownloadURL()
+      })
+      .then(downloadURL => {
+        imageUrl = downloadURL
+        const newPayload = {
+          ...payload,
+          id: key,
+          imageUrl: imageUrl
+        }
+        firebase
+          .database()
+          .ref('users')
+          .child(rootState.user.user.user.uid + `/${key}`)
+          .set(newPayload)
 
-          return firebase
-            .database()
-            .ref('users')
-            .child(rootState.user.user.user.uid + `/${key}`)
-            .set(newPayload)
-        })
+        return newPayload
       })
   },
   getJMTZ({ rootState }) {

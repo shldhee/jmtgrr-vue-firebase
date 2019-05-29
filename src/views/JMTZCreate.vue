@@ -139,6 +139,9 @@
 <script>
 import { required, numeric } from 'vuelidate/lib/validators'
 export default {
+  created() {
+    this.$store.dispatch('getJMTZs')
+  },
   data() {
     return {
       JMTZObject: this.createFreshJMTZObject(),
@@ -161,7 +164,7 @@ export default {
       this.$v.$touch()
       if (!this.$v.$invalid) {
         this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
-          console.log('1.Create')
+          // console.log('1.Create')
           this.$router.push({ name: 'jmtzlist' })
           this.JMTZObject = this.createFreshJMTZObject()
         })

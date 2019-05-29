@@ -11,11 +11,6 @@
       "source": "**",
       "destination": "/index.html"
     }],
-    "redirects": [{
-      "source": "**",
-      "destination": "/404",
-      "type": 404
-    }],
     "headers": [ {
       "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
       "headers" : [ {

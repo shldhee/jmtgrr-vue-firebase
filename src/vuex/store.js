@@ -24,7 +24,8 @@ export default new Vuex.Store({
       state.getAllJMTZs = payload
     },
     SET_JMTZ(state, payload) {
-      state.JMTZs.push(payload)
+      const id = payload.id
+      state.getJMTZs[id] = payload
     },
     REMOVE_JMTZ(state, obj) {
       state.getJMTZs = obj
@@ -37,7 +38,7 @@ export default new Vuex.Store({
     createjmt({ commit, dispatch, rootState }, payload) {
       return firebaseService
         .addJMTZ({ rootState }, payload)
-        .then(() => {
+        .then(payload => {
           commit('SET_JMTZ', payload)
           const notification = {
             type: 'success',
@@ -55,12 +56,10 @@ export default new Vuex.Store({
         })
     },
     getJMTZs({ rootState, dispatch, commit }) {
-      console.log('2. store action getJMTZs start')
       return firebaseService
         .getJMTZ({ rootState })
         .once('value')
         .then(snapshot => {
-          console.log('3. after fb servcices', snapshot.val())
           const notification = {
             type: 'success',
             message: '존맛탱집 리스트를 정상적으로 불러왔습니다.'
@@ -99,7 +98,6 @@ export default new Vuex.Store({
         })
     },
     removeJMTZ({ rootState, commit, dispatch }, { getJMTZ, key }) {
-      console.log(getJMTZ)
       return firebaseService
         .removeJMTZ({ rootState }, getJMTZ, key)
         .then(() => {
@@ -119,7 +117,6 @@ export default new Vuex.Store({
         })
     },
     updateJMTZ({ rootState, commit, dispatch }, { getJMTZ, key }) {
-      console.log(getJMTZ, key)
       return firebaseService
         .updateJMTZ({ rootState }, getJMTZ, key)
         .then(() => {
