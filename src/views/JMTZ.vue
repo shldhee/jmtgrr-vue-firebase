@@ -9,11 +9,15 @@
       <div
         class="list_image-wrap"
         style="width: 400px;"
-        v-lazy-container="{ selector: 'img' }"
+        v-lazy-container="{
+          selector: 'img'
+        }"
       >
+        <img src="@/assets/logo.png" alt="" />
         <img
           class="list_image"
           :data-src="list.imageUrl"
+          data-loading="@/assets/logo.png"
           alt=""
           style="width: 100%"
         />
@@ -47,7 +51,11 @@ export default {
   },
   methods: {
     convertDate(date) {
-      return date.slice(0, 8)
+      // console.log(date)
+      // console.log(this.$moment(date).format())
+      // console.log(this.$moment(date).format('YYYYMMDD'))
+      // return date.slice(0, 8)
+      return this.$moment(date).format('YYYYMMDD')
     }
   }
 }
@@ -80,7 +88,6 @@ export default {
   }
 
   &_image-wrap {
-    // border: 1px solid red;
     width: 400px;
   }
 

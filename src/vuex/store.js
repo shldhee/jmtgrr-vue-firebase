@@ -13,7 +13,7 @@ export default new Vuex.Store({
   },
   state: {
     JMTZs: [],
-    getJMTZs: null,
+    getJMTZs: {},
     getAllJMTZs: null
   },
   mutations: {
@@ -24,8 +24,9 @@ export default new Vuex.Store({
       state.getAllJMTZs = payload
     },
     SET_JMTZ(state, payload) {
-      const id = payload.id
-      state.getJMTZs[id] = payload
+      const temp = payload.id
+      state.getJMTZs = state.getJMTZs === null ? {} : state.getJMTZs
+      state.getJMTZs[temp] = payload // 여기서 타입에러 발생
     },
     REMOVE_JMTZ(state, obj) {
       state.getJMTZs = obj
@@ -65,8 +66,9 @@ export default new Vuex.Store({
             message: '존맛탱집 리스트를 정상적으로 불러왔습니다.'
           }
           dispatch('notification/add', notification, { root: true })
-          commit('GET_JMTZS', snapshot.val())
-          return snapshot.val()
+          const newSnapShot = snapshot.val()
+          commit('GET_JMTZS', newSnapShot)
+          return newSnapShot
         })
         .catch(error => {
           const notification = {

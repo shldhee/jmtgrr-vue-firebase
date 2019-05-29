@@ -117,7 +117,6 @@
         accept="image/*"
         @change="onFilePicked"
       />
-      <!-- <label for="uploadImg">이미지를 업로드 해주세요.</label> -->
       <img :src="JMTZObject.imageUrl" width="100%" alt />
     </div>
 
@@ -164,7 +163,6 @@ export default {
       this.$v.$touch()
       if (!this.$v.$invalid) {
         this.$store.dispatch('createjmt', this.JMTZObject).then(() => {
-          // console.log('1.Create')
           this.$router.push({ name: 'jmtzlist' })
           this.JMTZObject = this.createFreshJMTZObject()
         })
@@ -184,7 +182,7 @@ export default {
         like: '',
         imageUrl: null,
         image: null,
-        date: this.$moment(new Date()).format('YYYYMMDDSS')
+        date: this.$moment(new Date()).format()
       }
     },
     onPickFile() {
@@ -207,9 +205,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.form_create {
-}
-
 input[type='checkbox'] {
   display: none;
 }

@@ -2,7 +2,7 @@
   <div class="home">
     <h1>JMTgram</h1>
     <p>존맛탱집을 공유하는 서비스</p>
-    <login-user v-if="!loggedIn"></login-user>
+    <LoginUser v-if="!loggedIn"></LoginUser>
     <router-view />
   </div>
 </template>
@@ -28,8 +28,5 @@ export default {
 <style lang="scss" scoped>
 .home {
   padding: 3rem;
-}
-h1 {
-  text-align: center;
 }
 </style>
