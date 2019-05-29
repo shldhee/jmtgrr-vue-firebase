@@ -18,7 +18,7 @@ npm run serve
 
 ## 🐹사용 예제
 
-- 스크린샷
+![jmttest](https://user-images.githubusercontent.com/20432185/58534832-49806f00-8227-11e9-8ace-4f45e045eefb.gif)
 
 ## 🐰업데이트 내역
 
