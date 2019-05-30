@@ -174,7 +174,7 @@ export default {
         })
       }
     },
-    createFreshJMTZObject() {
+    createFreshJMTZObject: function() {
       console.log(email)
       console.log(this.email)
       const email = this.$store.state.user.user.user.email
