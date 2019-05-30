@@ -136,6 +136,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { required, numeric } from 'vuelidate/lib/validators'
 export default {
   created() {
@@ -158,6 +159,11 @@ export default {
       like: { required }
     }
   },
+  computed: {
+    ...mapState({
+      email: state => state.user.user.user.email
+    })
+  },
   methods: {
     create() {
       this.$v.$touch()
@@ -169,6 +175,8 @@ export default {
       }
     },
     createFreshJMTZObject() {
+      console.log(email)
+      console.log(this.email)
       const email = this.$store.state.user.user.user.email
       return {
         email: email,
