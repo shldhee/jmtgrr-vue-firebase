@@ -29,11 +29,10 @@ export default {
         }
       }
 
-      // console.log(allArr)
-      // console.log(allArr.sort((a, b) => b.date - a.date))
-
       return allArr.sort(
-        (a, b) => b.date.getTime() / 1000 - a.date.getTime() / 1000
+        (a, b) =>
+          this.$moment(b.date).format('YYYYMMDDHHMMSS') -
+          this.$moment(a.date).format('YYYYMMDDHHMMSS')
       )
     }
   },
