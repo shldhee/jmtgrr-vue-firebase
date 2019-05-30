@@ -36,7 +36,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    createjmt({ commit, dispatch, rootState }, payload) {
+    createJMTZ({ commit, dispatch, rootState }, payload) {
       return firebaseService
         .addJMTZ({ rootState }, payload)
         .then(payload => {

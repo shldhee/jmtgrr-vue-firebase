@@ -51,10 +51,6 @@ export default {
   },
   methods: {
     convertDate(date) {
-      // console.log(date)
-      // console.log(this.$moment(date).format())
-      // console.log(this.$moment(date).format('YYYYMMDD'))
-      // return date.slice(0, 8)
       return this.$moment(date).format('YYYYMMDD')
     }
   }
