@@ -25,7 +25,8 @@ export default {
     value: [String, Number, Boolean],
     title: {
       type: String,
-      required: true
+      required: true,
+      default: 'asdf'
     },
     label: {
       type: String
